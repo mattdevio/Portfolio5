@@ -1,0 +1,19 @@
+{
+  "name": "portfolio5",
+  "version": "1.0.0",
+  "description": "Project and portfolio 5 class project.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattgreenberg/Portfolio5.git"
+  },
+  "author": "Matthew Greenberg",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattgreenberg/Portfolio5/issues"
+  },
+  "homepage": "https://github.com/mattgreenberg/Portfolio5#readme"
+}
