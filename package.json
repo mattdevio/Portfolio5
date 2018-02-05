@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/mattgreenberg/Portfolio5/issues"
   },
-  "homepage": "https://github.com/mattgreenberg/Portfolio5#readme"
+  "homepage": "https://github.com/mattgreenberg/Portfolio5#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "express-session": "^1.15.6",
+    "googleapis": "^25.0.0",
+    "morgan": "^1.9.0"
+  }
 }
