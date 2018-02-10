@@ -4,7 +4,7 @@
   "description": "Project and portfolio 5 class project.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "google-test": "nodemon google_signin/server.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +21,8 @@
     "express-session": "^1.15.6",
     "googleapis": "^25.0.0",
     "morgan": "^1.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.14.12"
   }
 }
