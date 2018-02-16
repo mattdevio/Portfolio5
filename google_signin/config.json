@@ -1,9 +1,0 @@
-{
-  "project": "Google-Signin-Test",
-  "email": "mattgreenberg214@gmail.com",
-  "name": "Web client 1",
-  "date": "Feb 4, 2018",
-  "client_id": "env variable",
-  "secret": "env variable",
-  "redirect": "http://localhost:3000/oauthCallback"
-}
