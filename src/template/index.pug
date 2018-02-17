@@ -1,0 +1,13 @@
+- var title = htmlWebpackPlugin.options.title
+- var reactRoot = htmlWebpackPlugin.options.reactRoot
+- var author = htmlWebpackPlugin.options.author
+
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(name='description', content=title)
+    meta(name='author', content=author)
+    title #{title}
+  body
+    div(id=reactRoot)
