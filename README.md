@@ -21,7 +21,7 @@ __Please see the `package.json` file for dependencies__
 
 I am using `Webpack 3` to bundle assets and run tasks. _The configuration is custom and no react bootstrap was used._<br>
 
-** Scripts **
+**Scripts**
 ```
 # Clone the reposition
 $bash: git clone https://github.com/mattgreenberg/Portfolio5.git ./moolahlah
