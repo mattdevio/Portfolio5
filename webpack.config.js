@@ -25,6 +25,7 @@ module.exports = {
     publicPath: '/',
     port: 3000,
     inline: true,
+    historyApiFallback: true,
   },
 
   resolve: {
