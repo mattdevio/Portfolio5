@@ -7,12 +7,6 @@ const path = require('path')
 const sourceMap = process.env.NODE_ENV === 'development'
   ? 'inline-source-map'
   : 'source-map'
-const styleLine = [
-  'style-loader',
-  '!css-loader',
-  '?modules=true',
-  '&localIdentName=[name]__[local]___[hash:base64:5]'
-].join('')
 
 module.exports = {
   entry: {
