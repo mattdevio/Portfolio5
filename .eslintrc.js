@@ -7,6 +7,8 @@ module.exports = {
     "no-console": 0,
     "semi": ["error", "never"],
     "quotes": ["error", "single"],
+    "jsx-quotes": ["error", "prefer-single"],
     "padded-blocks": 0,
+    "import/prefer-default-export": 0,
   },
 }

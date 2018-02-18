@@ -1,6 +1,6 @@
-import auth from './auth'
-import db from './db'
-import firebase from './firebase'
+import * as auth from './auth'
+import * as db from './db'
+import * as firebase from './firebase'
 
 export default {
   auth,

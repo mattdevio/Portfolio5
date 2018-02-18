@@ -1,5 +1,1 @@
-const LANDING = '/'
-
-export default {
-  LANDING,
-}
+export const LANDING = '/'
