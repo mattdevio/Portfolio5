@@ -16,7 +16,7 @@ module.exports = {
 
   output: {
     filename: '[name]-[chunkhash:8].bundle.js',
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'docs'),
   },
 
   devtool: sourceMap,
