@@ -4,8 +4,8 @@
   "description": "a budgeting application",
   "main": "index.js",
   "scripts": {
-    "build": "NODE_ENV=production webpack --config webpack.config.js",
-    "start": "rm -rf ./docs && NODE_ENV=development webpack-dev-server --open --config webpack.config.js"
+    "build": "rm -rf ./docs && NODE_ENV=production webpack --config webpack.config.js",
+    "start": "NODE_ENV=development webpack-dev-server --open --config webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/mattgreenberg/Portfolio5#readme",
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.40",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-beta.40",
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-react": "^7.0.0-beta.40",
     "babel-loader": "^8.0.0-beta.0",
@@ -41,6 +42,9 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "react-router-dom": "^4.2.2"
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "recompose": "^0.26.0",
+    "redux": "^3.7.2"
   }
 }
