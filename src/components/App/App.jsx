@@ -5,7 +5,7 @@ import styles from './App.css'
 
 const App = ({ name }) => (
   <div className={styles.flex}>
-    <h1>{name}</h1>
+    <h1 className={styles.words}>{name}</h1>
   </div>
 )
 
