@@ -72,8 +72,7 @@ module.exports = {
   plugins: [
     // Chunk listed vendor files
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity,
+      name: 'vendor'
     }),
     // Chunk the webpack module scafolding
     new webpack.optimize.CommonsChunkPlugin({
