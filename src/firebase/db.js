@@ -1,11 +1,10 @@
 import { db } from './firebase'
 
-const doCreateUser = (id, displayName, email) =>
+const doCreateUser = (id, displayName) =>
   db.ref(`users/${id}`).set({
     displayName,
-    email,
   })
 
 export default {
-  doCreateUserk
+  doCreateUser,
 }
