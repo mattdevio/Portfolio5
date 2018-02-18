@@ -56,7 +56,7 @@ module.exports = {
           },
         },
       },
-      // Load pug files
+      // Load PUG files
       {
         test: /\.pug$/,
         use: 'pug-loader',
