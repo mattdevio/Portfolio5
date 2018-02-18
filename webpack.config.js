@@ -10,7 +10,7 @@ const sourceMap = process.env.NODE_ENV === 'development'
 
 module.exports = {
   entry: {
-    vender: ['react', 'react-dom', 'react-router-dom'],
+    vender: ['react', 'react-dom', 'react-router-dom', 'firebase', 'prop-types'],
     app: './src/index.jsx',
   },
 
