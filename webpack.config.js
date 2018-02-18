@@ -1,11 +1,18 @@
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const path = require('path')
 
 // 
 const sourceMap = process.env.NODE_ENV === 'development'
   ? 'inline-source-map'
   : 'source-map'
+const styleLine = [
+  'style-loader',
+  '!css-loader',
+  '?modules=true',
+  '&localIdentName=[name]__[local]___[hash:base64:5]'
+].join('')
 
 module.exports = {
   entry: {
@@ -57,6 +64,14 @@ module.exports = {
         test: /\.pug$/,
         use: 'pug-loader',
       },
+      // Load CSS Styles
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+            fallback: 'style-loader',
+            use: 'css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]"'
+        }),
+      },
     ],
   },
 
@@ -77,6 +92,11 @@ module.exports = {
       reactRoot: 'root',
       author: 'Matthew Greenberg',
       template: './src/template/index.pug',
+    }),
+    // Don't bundle CSS Into Webpack, use a seperate file
+    new ExtractTextPlugin({
+      filename: 'app.css',
+      allChunks: true
     }),
   ],
 
