@@ -1,43 +1,41 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { NavLink, withRouter } from 'react-router-dom'
 
 import styles from './Navigation.css'
 import * as routes from '../../constants/routes'
 
-const mapStateToProps = state => ({
-  authUser: state.sessionState.authUser,
-  activeLink: state.visualState.activeLink,
-})
-
-const mapDispatchToProps = dispatch => ({
-  setActiveLink: activeLink => dispatch({ type: 'SET_ACTIVE_LINK', activeLink }),
-})
-
-const Navigation = () => (
-  <ul className={styles.container} >
-    <NavLink to={routes.LANDING}>Home</NavLink>
-    <NavLink to={routes.SIGN_IN}>Sign In</NavLink>
-    <NavLink onlyAuth to={routes.DASHBOARD}>Dashboard</NavLink>
+const Navigation = ({ authUser }) => (
+  <ul className={styles.container}>
+    {
+      authUser ?
+        <AuthNav /> :
+        <NoAuthNav />
+    }
   </ul>
 )
 
-const NavLink = connect(mapStateToProps, mapDispatchToProps)((props) => {
-  const {
-    authUser,
-    activeLink,
-    setActiveLink,
-    to,
-    onlyAuth,
-    children,
-  } = props
-  if (onlyAuth && !authUser) return null
-  const styleString = (to === activeLink) ? `${styles.link} ${styles.isActive}` : styles.link
-  return (
-    <li>
-      <Link to={to} className={styleString} onClick={() => setActiveLink(to)}>{children}</Link>
-    </li>
-  )
+const WayLink = ({ to, children }) => (
+  <NavLink exact to={to} className={styles.link} activeClassName={styles.active}>
+    {children}
+  </NavLink>
+)
+
+const NoAuthNav = () => (
+  <Fragment>
+    <WayLink to={routes.LANDING}>Home</WayLink>
+    <WayLink to={routes.SIGN_IN}>Sign In</WayLink>
+  </Fragment>
+)
+
+const AuthNav = () => (
+  <Fragment>
+    <WayLink to={routes.LANDING}>Home</WayLink>
+  </Fragment>
+)
+
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser,
 })
 
-export default Navigation
+export default withRouter(connect(mapStateToProps)(Navigation))

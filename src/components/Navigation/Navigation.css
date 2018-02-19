@@ -12,8 +12,10 @@
   font-weight: 800;
   color: var(--blue);
   cursor: pointer;
-  padding: 5px;
+  padding: 8px;
   position: relative;
+  display: inline-block;
+  margin-left: 15px;
 }
 .link::before {
   content: "";
@@ -27,6 +29,6 @@
   transition: all 0.3s;
 }
 .link:hover::before,
-.isActive::before {
+.active::before {
   max-width: 100%;
 }
