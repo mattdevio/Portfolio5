@@ -10,7 +10,7 @@ import LandingPage from './LandingPage'
 import * as routes from '../constants/routes'
 
 const App = () => (
-  <Router basename={BASE_URL}>
+  <Router>
     <Fragment>
 
       <Header />
