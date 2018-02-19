@@ -99,6 +99,9 @@ module.exports = {
       filename: 'app.css',
       allChunks: true
     }),
+    new webpack.DefinePlugin({
+      BASE_URL: JSON.stringify(process.env.BASE_URL ? process.env.BASE_URL : '/'),
+    }),
   ],
 
 } // end of module.exports

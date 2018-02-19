@@ -12659,7 +12659,7 @@ exports.WebSocketConnection = WebSocketConnection;
 
 //# sourceMappingURL=WebSocketConnection.js.map
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3)))
 
 /***/ }),
 /* 110 */
@@ -14280,7 +14280,7 @@ function continueResumableUpload(location, authWrapper, url, blob, chunkSize, ma
 /* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(3);
+__webpack_require__(2);
 __webpack_require__(68);
 __webpack_require__(44);
 __webpack_require__(168);
@@ -14950,7 +14950,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19), __webpack_require__(2)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19), __webpack_require__(3)))
 
 /***/ }),
 /* 175 */
@@ -26803,4 +26803,4 @@ function stop(id) {
 
 /***/ })
 ],[130]);
-//# sourceMappingURL=vender-1967cf22.bundle.js.map
+//# sourceMappingURL=vender-1566f065.bundle.js.map
