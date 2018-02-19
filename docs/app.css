@@ -1,6 +1,5 @@
 .-Header-container-qQ2mF7- {
   background-color: var(--iron);
-  margin-bottom: 15px;
 }
 .-Header-wrapper-3AwTGb- {
   display: flex;
@@ -40,10 +39,10 @@
 .-Navigation-link-Ntl35P-::before {
   content: "";
   position: absolute;
-  width: 100%;
+  width: calc(100% - 16px);
   max-width: 0;
-  height: 5px;
-  left: 0;
+  height: 2px;
+  left: 8px;
   bottom: 0;
   background-color: var(--blue);
   transition: all 0.3s;
@@ -56,12 +55,59 @@
   display: block;
   width: 100%;
   max-width: var(--wrapper);
-  margin-left: auto;
-  margin-right: auto;
   padding: 15px;
+  margin: auto;
 }
-.-LandingPage-landingImg-1j5NYW-{
+.-LandingPage-landingImg-1j5NYW- {
   max-width: 100%;
+  margin-bottom: 25px;
+}
+.-LandingPage-snippet-1X12ji- {
+  font-size: 2.5em;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.2em;
+  color: var(--coal);
+}
+.-LandingPage-signup-34YAWs- {
+  padding: 15px;
+  text-decoration: none;
+  font-size: 2.5em;
+  border-radius: 12px;
+  width: 200px;
+  cursor: pointer;
+  color: var(--coal);
+  background-color: var(--green);
+  border: 3px solid var(--pea);
+  font-weight: 800;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  position: relative;
+  margin: 15px auto 0 auto;
+  transition: all 0.3s;
+}
+.-LandingPage-signup-34YAWs-:hover{
+  box-shadow: 0 8px 6px -6px black;
+  transform: translateY(-3px);
+}
+.-LandingPage-signup-34YAWs-:active{
+  transform: translateY(0);
+  box-shadow: none;
+  transition: none;
+}.-App-flex-A-IeVD-{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+.-App-footer-3bBXH--{
+  padding: 15px;
+  background-color: var(--silver);
+  display: block;
+  text-align: center;
+  color: #fff;
+  font-size: 1.5em;
 }/* CSS APP WIDE VARIABLES */
 :root {
   --coal:    #222628;
