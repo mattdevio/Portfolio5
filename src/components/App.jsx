@@ -10,7 +10,7 @@ import LandingPage from './LandingPage'
 import * as routes from '../constants/routes'
 
 const App = () => (
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <Fragment>
 
       <Header />
