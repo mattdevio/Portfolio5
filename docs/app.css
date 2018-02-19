@@ -1,14 +1,65 @@
-.-App-flex-A-IeVD- {
+.-Header-container-qQ2mF7- {
+  background-color: var(--iron);
+  margin-bottom: 15px;
+}
+.-Header-wrapper-3AwTGb- {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 100%;
+  padding: 15px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.-App-words-2XTgD6- {
-  font-size: 3rem;
+.-Header-logo-2jKwzD- {
+  width: 200px;
+  height: auto;
+}
+.-Header-nav-3pohg4- {
+  margin-left: auto;
+}.-Navigation-container-1QYlzS- {
+  margin-left: auto;
+}
+.-Navigation-container-1QYlzS- li {
+  display: inline-block;
+  margin-left: 20px;
+}
+.-Navigation-link-Ntl35P- {
+  font-size: 2em;
+  text-decoration: none;
+  text-transform: uppercase;
   font-weight: 800;
-  color: var(--coal);
+  color: var(--blue);
+  cursor: pointer;
+  padding: 5px;
+  position: relative;
+}
+.-Navigation-link-Ntl35P-::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  max-width: 0;
+  height: 5px;
+  left: 0;
+  bottom: 0;
+  background-color: var(--blue);
+  transition: all 0.3s;
+}
+.-Navigation-link-Ntl35P-:hover::before,
+.-Navigation-isActive-1tzQER-::before {
+  max-width: 100%;
+}
+.-LandingPage-container-2z-Roy- {
+  display: block;
+  width: 100%;
+  max-width: var(--wrapper);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+}
+.-LandingPage-landingImg-1j5NYW-{
+  max-width: 100%;
 }/* CSS APP WIDE VARIABLES */
 :root {
   --coal:    #222628;
@@ -18,6 +69,7 @@
   --pea:     #778614;
   --blue:    #3a5369;
   --font:    "hypatia-sans-pro", sans-serif;
+  --wrapper: 1000px;
 }
 
 /* -------------------- CSS RESET -------------------- */
