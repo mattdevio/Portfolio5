@@ -2187,7 +2187,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
 
 var App = function App() {
-  return _react.default.createElement(_reactRouterDom.BrowserRouter, {
+  return _react.default.createElement(_reactRouterDom.HashRouter, {
     basename: "/Portfolio5/"
   }, _react.default.createElement(_react.Fragment, null, _react.default.createElement(_Header.default, null), _react.default.createElement(_reactRouterDom.Route, {
     exact: true,
@@ -2558,4 +2558,4 @@ exports.DASHBOARD = DASHBOARD;
 /***/ })
 
 },[252]);
-//# sourceMappingURL=app-b27c5ea5.bundle.js.map
+//# sourceMappingURL=app-32dc8d9f.bundle.js.map
