@@ -15,5 +15,6 @@ module.exports = {
       "specialLink": [ "to", "hrefLeft", "hrefRight" ],
       "aspects": [ "noHref", "invalidHref", "preferButton" ]
     }],
+    "react/prop-types": 0,
   },
 }

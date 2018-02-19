@@ -26,6 +26,7 @@
   background-color: var(--blue);
   transition: all 0.3s;
 }
-.link:hover::before {
+.link:hover::before,
+.isActive::before {
   max-width: 100%;
 }

@@ -1,44 +1,43 @@
-import React, { Fragment } from 'react'
-import PropTypes from 'prop-types'
+import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 import styles from './Navigation.css'
 import * as routes from '../../constants/routes'
 
-const Navigation = ({ authUser }) => (
+const mapStateToProps = state => ({
+  authUser: state.sessionState.authUser,
+  activeLink: state.visualState.activeLink,
+})
+
+const mapDispatchToProps = dispatch => ({
+  setActiveLink: activeLink => dispatch({ type: 'SET_ACTIVE_LINK', activeLink }),
+})
+
+const Navigation = () => (
   <ul className={styles.container} >
-    {
-      authUser ?
-        <NavigationAuth /> :
-        <NavigationNonAuth />
-    }
+    <NavLink to={routes.LANDING}>Home</NavLink>
+    <NavLink to={routes.SIGN_IN}>Sign In</NavLink>
+    <NavLink onlyAuth to={routes.DASHBOARD}>Dashboard</NavLink>
   </ul>
 )
 
-Navigation.propTypes = {
-  authUser: PropTypes.shape({}),
-}
-
-Navigation.defaultProps = {
-  authUser: null,
-}
-
-const NavigationAuth = () => (
-  <Fragment>
-    <li>You Are Authorized</li>
-  </Fragment>
-)
-
-const NavigationNonAuth = () => (
-  <Fragment>
-    <li><Link to={routes.LANDING} className={styles.link}>Home</Link></li>
-    <li><Link to={routes.SIGN_IN} className={styles.link}>Sign In</Link></li>
-  </Fragment>
-)
-
-const mapStateToProps = state => ({
-  authUser: state.sessionState.authUser,
+const NavLink = connect(mapStateToProps, mapDispatchToProps)((props) => {
+  const {
+    authUser,
+    activeLink,
+    setActiveLink,
+    to,
+    onlyAuth,
+    children,
+  } = props
+  if (onlyAuth && !authUser) return null
+  const styleString = (to === activeLink) ? `${styles.link} ${styles.isActive}` : styles.link
+  return (
+    <li>
+      <Link to={to} className={styleString} onClick={() => setActiveLink(to)}>{children}</Link>
+    </li>
+  )
 })
 
-export default connect(mapStateToProps)(Navigation)
+export default Navigation
