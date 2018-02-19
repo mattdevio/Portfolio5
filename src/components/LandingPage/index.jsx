@@ -10,6 +10,12 @@ const LandingPage = () => (
       src={landingImg}
       alt='Welcome to moolahlah financial planner.'
     />
+    <p>
+      Writing out your monthly budget by hand can be a difficult task.
+    </p>
+    <p>
+      With <span>moolahlah</span>, you can quickly sort and organize your bills and expenses!
+    </p>
   </div>
 )
 

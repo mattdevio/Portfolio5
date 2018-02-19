@@ -4,10 +4,10 @@ import {
   Route,
 } from 'react-router-dom'
 
-import Header from './Header'
-import LandingPage from './LandingPage'
+import Header from '../Header'
+import LandingPage from '../LandingPage'
 
-import * as routes from '../constants/routes'
+import * as routes from '../../constants/routes'
 
 const App = () => (
   <Router>
