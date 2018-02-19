@@ -32,8 +32,10 @@
   font-weight: 800;
   color: var(--blue);
   cursor: pointer;
-  padding: 5px;
+  padding: 8px;
   position: relative;
+  display: inline-block;
+  margin-left: 15px;
 }
 .-Navigation-link-Ntl35P-::before {
   content: "";
@@ -47,7 +49,7 @@
   transition: all 0.3s;
 }
 .-Navigation-link-Ntl35P-:hover::before,
-.-Navigation-isActive-1tzQER-::before {
+.-Navigation-active-3hAr4X-::before {
   max-width: 100%;
 }
 .-LandingPage-container-2z-Roy- {
