@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import {
   HashRouter as Router,
   Route,
@@ -8,10 +8,11 @@ import Header from '../Header'
 import LandingPage from '../LandingPage'
 
 import * as routes from '../../constants/routes'
+import styles from './App.css'
 
 const App = () => (
   <Router>
-    <Fragment>
+    <div className={styles.flex}>
 
       <Header />
 
@@ -21,7 +22,9 @@ const App = () => (
         component={() => <LandingPage />}
       />
 
-    </Fragment>
+      <p className={styles.footer}>By: Matthew Greenberg</p>
+
+    </div>
   </Router>
 )
 

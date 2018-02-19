@@ -2,13 +2,12 @@
   display: block;
   width: 100%;
   max-width: var(--wrapper);
-  margin-left: auto;
-  margin-right: auto;
   padding: 15px;
+  margin: auto;
 }
 .landingImg {
   max-width: 100%;
-  margin-bottom: 50px;
+  margin-bottom: 25px;
 }
 .snippet {
   font-size: 2.5em;

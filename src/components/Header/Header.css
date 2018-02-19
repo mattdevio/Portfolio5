@@ -1,6 +1,5 @@
 .container {
   background-color: var(--iron);
-  margin-bottom: 15px;
 }
 .wrapper {
   display: flex;
