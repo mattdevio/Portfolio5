@@ -6,6 +6,42 @@
   margin-right: auto;
   padding: 15px;
 }
-.landingImg{
+.landingImg {
   max-width: 100%;
+  margin-bottom: 50px;
+}
+.snippet {
+  font-size: 2.5em;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.2em;
+  color: var(--coal);
+}
+.signup {
+  padding: 15px;
+  text-decoration: none;
+  font-size: 2.5em;
+  border-radius: 12px;
+  width: 200px;
+  cursor: pointer;
+  color: var(--coal);
+  background-color: var(--green);
+  border: 3px solid var(--pea);
+  font-weight: 800;
+  text-transform: uppercase;
+  display: block;
+  text-align: center;
+  position: relative;
+  margin: 15px auto 0 auto;
+  transition: all 0.3s;
+}
+.signup:hover{
+  box-shadow: 0 8px 6px -6px black;
+  transform: translateY(-3px);
+}
+.signup:active{
+  transform: translateY(0);
+  box-shadow: none;
+  transition: none;
 }

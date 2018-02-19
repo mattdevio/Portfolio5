@@ -1,4 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+
+import * as routes from '../../constants/routes'
 
 import styles from './LandingPage.css'
 import landingImg from '../../img/landing.png'
@@ -10,12 +13,13 @@ const LandingPage = () => (
       src={landingImg}
       alt='Welcome to moolahlah financial planner.'
     />
-    <p>
+    <p className={styles.snippet}>
       Writing out your monthly budget by hand can be a difficult task.
     </p>
-    <p>
-      With <span>moolahlah</span>, you can quickly sort and organize your bills and expenses!
+    <p className={styles.snippet}>
+      <span>Moolahlah</span> makes it better!
     </p>
+    <Link to={routes.SIGN_UP} className={styles.signup}>Get Started</Link>
   </div>
 )
 
