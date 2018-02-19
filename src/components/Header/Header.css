@@ -1,0 +1,21 @@
+.container {
+  background-color: var(--iron);
+  margin-bottom: 15px;
+}
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.logo {
+  width: 200px;
+  height: auto;
+}
+.nav {
+  margin-left: auto;
+}

@@ -1,4 +1,31 @@
-.container{
-  background: blue;
-  border: 3px solid #000;
+.container {
+  margin-left: auto;
+}
+.container li {
+  display: inline-block;
+  margin-left: 20px;
+}
+.link {
+  font-size: 2em;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--blue);
+  cursor: pointer;
+  padding: 5px;
+  position: relative;
+}
+.link::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  max-width: 0;
+  height: 5px;
+  left: 0;
+  bottom: 0;
+  background-color: var(--blue);
+  transition: all 0.3s;
+}
+.link:hover::before {
+  max-width: 100%;
 }

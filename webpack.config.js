@@ -69,6 +69,11 @@ module.exports = {
             use: 'css-loader?modules,localIdentName="[name]-[local]-[hash:base64:6]"'
         }),
       },
+      // Allow for importing images
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: 'url-loader',
+      },
     ],
   },
 
