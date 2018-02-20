@@ -1,13 +1,20 @@
-.flex{
+.flex {
   display: flex;
   height: 100%;
   flex-direction: column;
 }
-.footer{
+.footer {
   padding: 15px;
   background-color: var(--silver);
   display: block;
   text-align: center;
   color: #fff;
   font-size: 1.5em;
+}
+.me {
+  text-decoration: none;
+  color: #fff;
+}
+.me:hover {
+  color: var(--iron);
 }

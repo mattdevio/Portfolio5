@@ -7,6 +7,8 @@ import {
 import Header from '../Header'
 import LandingPage from '../LandingPage'
 import SignUpPage from '../SignUp'
+import MyBudget from '../MyBudget'
+import withAuthentication from '../withAuthentication'
 
 import * as routes from '../../constants/routes'
 import styles from './App.css'
@@ -29,10 +31,18 @@ const App = () => (
         component={() => <SignUpPage />}
       />
 
-      <p className={styles.footer}>By: Matthew Greenberg</p>
+      <Route
+        exact
+        path={routes.MY_BUDGET}
+        component={() => <MyBudget />}
+      />
+
+      <p className={styles.footer}>
+        By: <a className={styles.me} href='https://github.com/mattgreenberg'>Matthew Greenberg</a>
+      </p>
 
     </div>
   </Router>
 )
 
-export default App
+export default withAuthentication(App)

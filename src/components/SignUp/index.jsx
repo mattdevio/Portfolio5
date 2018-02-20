@@ -105,7 +105,7 @@ class SignUpForm extends Component {
         db.doCreateUser(authUser.uid, displayName)
           .then(() => {
             this.setState(() => ({ ...INITIAL_STATE }))
-            history.push(routes.HOME)
+            history.push(routes.MY_BUDGET)
           })
           .catch((error) => {
             this.setState(byPropKey('error', error))
@@ -157,10 +157,11 @@ class SignUpForm extends Component {
           placeHolder='Confirm your password.'
           label='Confirm Password'
         />
-        {
-          error &&
-          <p className={styles.error}>Error: {error.message}</p>
-        }
+
+        <p className={styles.error}>
+          { error && `Error: ${error.message}` }
+        </p>
+
         <div className={styles.actions}>
           <button type='submit' className={styles.signup}>
             Sign Up

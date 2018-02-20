@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
 import { withRouter } from 'react-router-dom'
@@ -23,11 +22,6 @@ const withAuthorization = authCondition => (Component) => {
     }
 
   } // end WithAuthorization
-
-  WithAuthorization.propTypes = {
-    history: PropTypes.shape([]).isRequired,
-    authUser: PropTypes.shape({}).isRequired,
-  }
 
   const mapStateToProps = state => ({
     authUser: state.sessionState.authUser,

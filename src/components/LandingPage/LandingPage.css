@@ -33,7 +33,7 @@
   text-align: center;
   position: relative;
   margin: 15px auto 0 auto;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 .signup:hover{
   box-shadow: 0 8px 6px -6px black;
