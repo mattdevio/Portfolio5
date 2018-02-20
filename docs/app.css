@@ -86,7 +86,7 @@
   text-align: center;
   position: relative;
   margin: 15px auto 0 auto;
-  transition: all 0.3s;
+  transition: all 0.2s;
 }
 .-LandingPage-signup-34YAWs-:hover{
   box-shadow: 0 8px 6px -6px black;
@@ -96,18 +96,115 @@
   transform: translateY(0);
   box-shadow: none;
   transition: none;
-}.-App-flex-A-IeVD-{
+}.-SignUp-container-1uHW05- {
+  display: block;
+  width: 100%;
+  max-width: calc(var(--wrapper) / 2);
+  padding: 15px;
+  margin: auto;
+  background: var(--iron);
+}
+.-SignUp-container-1uHW05- h1 {
+  display: block;
+  text-align: center;
+  font-size: 3em;
+  font-weight: 800;
+  padding: 0 15px;
+  color: var(--coal);
+}
+.-SignUp-container-1uHW05- p {
+  display: block;
+  text-align: center;
+  padding: 0;
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+.-SignUp-label-1PzkMK- {
+  display: block;
+  font-weight: 800;
+  font-size: 2em;
+  padding: 0;
+  margin-bottom: 5px;
+}
+.-SignUp-input-EG-xPr- {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  font-size: 2em;
+  margin-bottom: 10px;
+  border: 3px solid #fff;
+}
+.-SignUp-input-EG-xPr-:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+.-SignUp-container-1uHW05- p.-SignUp-error-1LxJFX- {
+  display: block;
+  text-align: left;
+  font-size: 1.5em;
+  color: #f00;
+  font-weight: 800;
+}
+.-SignUp-actions-OJuSW1- {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.-SignUp-signup-5ne7WC- {
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 2em;
+  border-radius: 7px;
+  cursor: pointer;
+  color: var(--coal);
+  background-color: var(--green);
+  border: 3px solid var(--pea);
+  font-weight: 800;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  margin: 5px 0 0 auto;
+  transition: all 0.2s;
+}
+.-SignUp-signup-5ne7WC-:hover{
+  box-shadow: 0 8px 6px -6px black;
+  transform: translateY(-3px);
+}
+.-SignUp-signup-5ne7WC-:active{
+  transform: translateY(0);
+  box-shadow: none;
+  transition: none;
+}
+.-SignUp-signup-5ne7WC-:focus{
+  outline: none;
+}
+.-MyBudget-container-25emxy- {
+  display: block;
+  margin: auto;
+}
+.-MyBudget-container-25emxy- h1{
+  font-size: 3em;
+  font-weight: 800;
+}.-App-flex-A-IeVD- {
   display: flex;
   height: 100%;
   flex-direction: column;
 }
-.-App-footer-3bBXH--{
+.-App-footer-3bBXH-- {
   padding: 15px;
   background-color: var(--silver);
   display: block;
   text-align: center;
   color: #fff;
   font-size: 1.5em;
+}
+.-App-me-2BnWE7- {
+  text-decoration: none;
+  color: #fff;
+}
+.-App-me-2BnWE7-:hover {
+  color: var(--iron);
 }/* CSS APP WIDE VARIABLES */
 :root {
   --coal:    #222628;
