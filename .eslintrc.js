@@ -16,5 +16,12 @@ module.exports = {
       "aspects": [ "noHref", "invalidHref", "preferButton" ]
     }],
     "react/prop-types": 0,
+    "jsx-a11y/label-has-for": [ 2, {
+        "components": [ "Label" ],
+        "required": {
+            "some": [ "nesting", "id" ]
+        },
+        "allowChildren": false
+    }],
   },
 }
