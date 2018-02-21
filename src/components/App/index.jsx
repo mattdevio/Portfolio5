@@ -5,9 +5,10 @@ import {
 } from 'react-router-dom'
 
 import Header from '../Header'
-import LandingPage from '../LandingPage'
+import LandingPage from '../Landing'
 import SignUpPage from '../SignUp'
-import MyBudget from '../MyBudget'
+import MyBudgetPage from '../MyBudget'
+import SignInPage from '../SignIn'
 import withAuthentication from '../withAuthentication'
 
 import * as routes from '../../constants/routes'
@@ -33,8 +34,14 @@ const App = () => (
 
       <Route
         exact
+        path={routes.SIGN_IN}
+        component={() => <SignInPage />}
+      />
+
+      <Route
+        exact
         path={routes.MY_BUDGET}
-        component={() => <MyBudget />}
+        component={() => <MyBudgetPage />}
       />
 
       <p className={styles.footer}>

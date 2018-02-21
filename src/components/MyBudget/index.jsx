@@ -7,7 +7,7 @@ import withAuthorization from '../withAuthorization'
 
 import styles from './MyBudget.css'
 
-class MyBudget extends Component {
+class MyBudgetPage extends Component {
 
   componentDidMount() {
     if (!this.props.displayName) {
@@ -47,4 +47,4 @@ const authCondition = authUser => !!authUser
 export default compose(
   withAuthorization(authCondition),
   connect(mapStateToProps, mapDispatchToProps),
-)(MyBudget)
+)(MyBudgetPage)
