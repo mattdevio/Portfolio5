@@ -33,6 +33,16 @@
   flex-direction: row;
   align-items: center;
 }
+.signin {
+  text-decoration: none;
+  font-size: 1.5em;
+  color: var(--blue);
+  padding: 5px 0;
+  margin-left: auto;
+}
+.signin:hover {
+  text-decoration: underline;
+}
 .signup {
   padding: 5px 10px;
   text-decoration: none;
@@ -47,7 +57,7 @@
   display: inline-block;
   text-align: center;
   position: relative;
-  margin: 5px 0 0 auto;
+  margin: 5px 0 5px 15px;
   transition: all 0.2s;
 }
 .signup:hover{

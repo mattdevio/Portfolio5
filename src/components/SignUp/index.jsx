@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {
   withRouter,
+  Link,
 } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
@@ -130,6 +131,9 @@ class SignUpForm extends Component {
         </p>
 
         <div className={styles.actions}>
+          <Link to={routes.SIGN_IN} className={styles.signin}>
+            I Already Have An Account
+          </Link>
           <button type='submit' className={styles.signup}>
             Sign Up
           </button>
