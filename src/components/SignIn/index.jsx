@@ -95,7 +95,7 @@ class SignInForm extends Component {
             to={routes.FORGOT_PASSWORD}
             className={styles.forgotpswd}
           >
-            Forgot Password
+            Forgot Password?
           </Link>
           <button type='submit' className={styles.signin}>
             Sign In
