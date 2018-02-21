@@ -31,7 +31,7 @@
   font-weight: 800;
   color: var(--blue);
   cursor: pointer;
-  padding: 8px;
+  padding: 5px 8px;
   position: relative;
   display: inline-block;
   margin-left: 15px;
@@ -51,18 +51,34 @@
 .-Navigation-active-3hAr4X-::before {
   max-width: 100%;
 }
-.-LandingPage-container-2z-Roy- {
+.-Navigation-signoutbtn-o57Sct- {
+  background-color: var(--green);
+  border: 2px solid var(--pea);
+  color: var(--coal);
+  font-size: 1.5em;
+  font-weight: 800;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  text-transform: uppercase;
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+}
+.-Navigation-signoutbtn-o57Sct-:hover {
+  box-shadow: var(--glow);
+}
+.-LandingPage-container-3C7fLA- {
   display: block;
   width: 100%;
   max-width: var(--wrapper);
   padding: 15px;
   margin: auto;
 }
-.-LandingPage-landingImg-1j5NYW- {
+.-LandingPage-landingImg-1B6gB4- {
   max-width: 100%;
   margin-bottom: 25px;
 }
-.-LandingPage-snippet-1X12ji- {
+.-LandingPage-snippet-xTxXil- {
   font-size: 2.5em;
   display: block;
   margin: 0 auto;
@@ -70,7 +86,7 @@
   line-height: 1.2em;
   color: var(--coal);
 }
-.-LandingPage-signup-34YAWs- {
+.-LandingPage-signup-2kR01p- {
   padding: 15px;
   text-decoration: none;
   font-size: 2.5em;
@@ -88,15 +104,28 @@
   margin: 15px auto 0 auto;
   transition: all 0.2s;
 }
-.-LandingPage-signup-34YAWs-:hover{
-  box-shadow: 0 8px 6px -6px black;
-  transform: translateY(-3px);
+.-LandingPage-signup-2kR01p-:hover{
+  box-shadow: var(--glow);
+}.-common-label-2CgBuX- {
+  display: block;
+  font-weight: 800;
+  font-size: 2em;
+  padding: 0;
+  margin-bottom: 5px;
 }
-.-LandingPage-signup-34YAWs-:active{
-  transform: translateY(0);
-  box-shadow: none;
-  transition: none;
-}.-SignUp-container-1uHW05- {
+.-common-input-3R9VUp- {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  font-size: 2em;
+  margin-bottom: 10px;
+  border: 3px solid #fff;
+}
+.-common-input-3R9VUp-:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+.-SignUp-container-1uHW05- {
   display: block;
   width: 100%;
   max-width: calc(var(--wrapper) / 2);
@@ -109,7 +138,7 @@
   text-align: center;
   font-size: 3em;
   font-weight: 800;
-  padding: 0 15px;
+  padding: 0 15px 5px 15px;
   color: var(--coal);
 }
 .-SignUp-container-1uHW05- p {
@@ -118,25 +147,6 @@
   padding: 0;
   font-size: 2em;
   margin-bottom: 15px;
-}
-.-SignUp-label-1PzkMK- {
-  display: block;
-  font-weight: 800;
-  font-size: 2em;
-  padding: 0;
-  margin-bottom: 5px;
-}
-.-SignUp-input-EG-xPr- {
-  display: block;
-  width: 100%;
-  padding: 5px;
-  font-size: 2em;
-  margin-bottom: 10px;
-  border: 3px solid #fff;
-}
-.-SignUp-input-EG-xPr-:focus {
-  outline: none;
-  border-color: var(--blue);
 }
 .-SignUp-container-1uHW05- p.-SignUp-error-1LxJFX- {
   display: block;
@@ -149,6 +159,16 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+.-SignUp-signin-2HKhYL- {
+  text-decoration: none;
+  font-size: 1.5em;
+  color: var(--blue);
+  padding: 5px 0;
+  margin-left: auto;
+}
+.-SignUp-signin-2HKhYL-:hover {
+  text-decoration: underline;
 }
 .-SignUp-signup-5ne7WC- {
   padding: 5px 10px;
@@ -164,17 +184,11 @@
   display: inline-block;
   text-align: center;
   position: relative;
-  margin: 5px 0 0 auto;
+  margin: 0 0 0 15px;
   transition: all 0.2s;
 }
 .-SignUp-signup-5ne7WC-:hover{
-  box-shadow: 0 8px 6px -6px black;
-  transform: translateY(-3px);
-}
-.-SignUp-signup-5ne7WC-:active{
-  transform: translateY(0);
-  box-shadow: none;
-  transition: none;
+  box-shadow: var(--glow);
 }
 .-SignUp-signup-5ne7WC-:focus{
   outline: none;
@@ -186,6 +200,146 @@
 .-MyBudget-container-25emxy- h1{
   font-size: 3em;
   font-weight: 800;
+}.-SignIn-container-1cU965-{
+  display: block;
+  width: 100%;
+  max-width: calc(var(--wrapper) / 2);
+  padding: 15px;
+  margin: auto;
+  background: var(--iron);
+}
+.-SignIn-container-1cU965- h1{
+  display: block;
+  text-align: center;
+  font-size: 3em;
+  font-weight: 800;
+  padding: 0 15px 5px 15px;
+  color: var(--coal);  
+}
+
+.-SignIn-actions-1z2AbM- {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.-SignIn-forgotpswd-2XXTxx- {
+  text-decoration: none;
+  font-size: 1.5em;
+  color: var(--blue);
+  padding: 5px 0;
+  margin-left: auto;
+}
+.-SignIn-forgotpswd-2XXTxx-:hover {
+  text-decoration: underline;
+}
+
+.-SignIn-signin-_S1wm2- {
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 2em;
+  border-radius: 7px;
+  cursor: pointer;
+  color: var(--coal);
+  background-color: var(--green);
+  border: 3px solid var(--pea);
+  font-weight: 800;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  margin: 0 0 0 15px;
+  transition: all 0.2s;
+}
+.-SignIn-signin-_S1wm2-:hover {
+  box-shadow: var(--glow);
+}
+.-SignIn-signin-_S1wm2-:focus {
+  outline: none;
+}
+
+.-SignIn-orsignup-h99X-f- {
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin: 15px 0 5px 0;
+  font-size: 1.5em;
+  color: var(--coal);
+}
+.-SignIn-signmeup-KVBKvG- {
+  text-decoration: none;
+  font-size: 1em;
+  color: var(--blue);
+  padding: 5px 0;
+  margin-left: auto;  
+}
+.-SignIn-signmeup-KVBKvG-:hover {
+  text-decoration: underline;
+}
+.-SignIn-container-1cU965- p.-SignIn-error-3Xcw09- {
+  display: block;
+  text-align: left;
+  font-size: 1.5em;
+  color: #f00;
+  font-weight: 800;
+}
+
+.-ForgotPassword-container-yCess6- {
+  display: block;
+  width: 100%;
+  max-width: calc(var(--wrapper) / 2);
+  padding: 15px;
+  margin: auto;
+  background: var(--iron);
+}
+.-ForgotPassword-container-yCess6- h1 {
+  display: block;
+  text-align: center;
+  font-size: 3em;
+  font-weight: 800;
+  padding: 0 15px 5px 15px;
+  color: var(--coal);    
+}
+.-ForgotPassword-container-yCess6- p {
+  display: block;
+  text-align: center;
+  padding: 0;
+  font-size: 2em;
+  margin-bottom: 15px;
+}
+.-ForgotPassword-container-yCess6- p.-ForgotPassword-error-3Gbamd- {
+  display: block;
+  text-align: left;
+  font-size: 1.5em;
+  color: #f00;
+  font-weight: 800;
+}
+.-ForgotPassword-actions-3aqdLc- {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.-ForgotPassword-resetpswd-1eZncT- {
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 2em;
+  border-radius: 7px;
+  cursor: pointer;
+  color: var(--coal);
+  background-color: var(--green);
+  border: 3px solid var(--pea);
+  font-weight: 800;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  margin: 0 0 0 auto;
+  transition: all 0.2s;
+}
+.-ForgotPassword-resetpswd-1eZncT-:hover {
+  box-shadow: var(--glow);
+}
+.-ForgotPassword-resetpswd-1eZncT-:focus {
+  outline: none;
 }.-App-flex-A-IeVD- {
   display: flex;
   height: 100%;
@@ -215,6 +369,7 @@
   --blue:    #3a5369;
   --font:    "hypatia-sans-pro", sans-serif;
   --wrapper: 1000px;
+  --glow: 0 5px 15px rgba(145, 92, 182, .4);
 }
 
 /* -------------------- CSS RESET -------------------- */
@@ -273,5 +428,8 @@ body {
 }
 * {
   box-sizing: border-box;
+}
+hr {
+  margin: 15px 0;
 }
 /*# sourceMappingURL=app.css.map*/
