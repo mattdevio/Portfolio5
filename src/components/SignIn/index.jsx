@@ -1,20 +1,28 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import { withRouter, Link } from 'react-router-dom'
 
 import { auth } from '../../firebase'
+import { byPropKey, FormInput } from '../common'
 import styles from './SignIn.css'
 import * as routes from '../../constants/routes'
 
 const SignInPage = ({ history }) => (
   <div className={styles.container}>
-    <h1>Sign In Page!</h1>
+    <h1>Sign In</h1>
     <SignInForm history={history} />
+    <hr />
+    <span className={styles.orsignup}>
+      Not Yet Registered?{' '}
+      <Link
+        to={routes.SIGN_UP}
+        className={styles.signmeup}
+      >
+        Create Your Account
+      </Link>
+    </span>
   </div>
 )
-
-const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value,
-})
 
 const INITIAL_STATE = {
   email: '',
@@ -27,6 +35,14 @@ class SignInForm extends Component {
     super(props)
     this.state = { ...INITIAL_STATE }
     this.onSubmit = this.onSubmit.bind(this)
+  }
+
+  getChildContext() {
+    return {
+      bubbleState: (propertyName, value) => {
+        this.setState(byPropKey(propertyName, value))
+      },
+    }
   }
 
   onSubmit(event) {
@@ -52,18 +68,47 @@ class SignInForm extends Component {
   }
 
   render() {
-    // const {
-    //   email,
-    //   password,
-    //   error,
-    // } = this.state
+    const {
+      email,
+      password,
+      error,
+    } = this.state
 
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>this is the form</h1>
+        <FormInput
+          propertyName='email'
+          value={email}
+          type='text'
+          label='Email'
+        />
+        <FormInput
+          propertyName='password'
+          value={password}
+          type='password'
+          label='Password'
+        />
+        <p className={styles.error}>
+          { error && `Error: ${error.message}` }
+        </p>
+        <div className={styles.actions}>
+          <Link
+            to={routes.FORGOT_PASSWORD}
+            className={styles.forgotpswd}
+          >
+            Forgot Password
+          </Link>
+          <button type='submit' className={styles.signin}>
+            Sign In
+          </button>
+        </div>
       </form>
     )
   }
+}
+
+SignInForm.childContextTypes = {
+  bubbleState: PropTypes.func,
 }
 
 export default withRouter(SignInPage)

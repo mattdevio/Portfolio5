@@ -1,3 +1,89 @@
 .container{
+  display: block;
+  width: 100%;
+  max-width: calc(var(--wrapper) / 2);
+  padding: 15px;
   margin: auto;
+  background: var(--iron);
 }
+.container h1{
+  display: block;
+  text-align: center;
+  font-size: 3em;
+  font-weight: 800;
+  padding: 0 15px;
+  color: var(--coal);  
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.forgotpswd {
+  text-decoration: none;
+  font-size: 1.5em;
+  color: var(--blue);
+  padding: 5px 0;
+  margin-left: auto;
+}
+.forgotpswd:hover {
+  text-decoration: underline;
+}
+
+.signin {
+  padding: 5px 10px;
+  text-decoration: none;
+  font-size: 2em;
+  border-radius: 7px;
+  cursor: pointer;
+  color: var(--coal);
+  background-color: var(--green);
+  border: 3px solid var(--pea);
+  font-weight: 800;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  position: relative;
+  margin: 5px 0 10px 15px;
+  transition: all 0.2s;
+}
+.signin:hover {
+  box-shadow: 0 8px 6px -6px black;
+  transform: translateY(-3px);
+}
+.signin:active {
+  transform: translateY(0);
+  box-shadow: none;
+  transition: none;
+}
+.signin:focus {
+  outline: none;
+}
+
+.orsignup {
+  text-align: center;
+  display: block;
+  width: 100%;
+  margin: 15px 0 5px 0;
+  font-size: 1.5em;
+  color: var(--coal);
+}
+.signmeup {
+  text-decoration: none;
+  font-size: 1em;
+  color: var(--blue);
+  padding: 5px 0;
+  margin-left: auto;  
+}
+.signmeup:hover {
+  text-decoration: underline;
+}
+.container p.error {
+  display: block;
+  text-align: left;
+  font-size: 1.5em;
+  color: #f00;
+  font-weight: 800;
+}
+

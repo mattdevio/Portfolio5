@@ -41,6 +41,7 @@ class SignUpForm extends Component {
   }
 
   onSubmit(event) {
+    event.preventDefault()
     const {
       displayName,
       email,
@@ -82,8 +83,6 @@ class SignUpForm extends Component {
       .catch((error) => {
         this.setState(byPropKey('error', error))
       })
-
-    event.preventDefault()
   }
 
   render() {
