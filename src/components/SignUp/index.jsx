@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import {
   withRouter,
 } from 'react-router-dom'
@@ -6,11 +6,8 @@ import PropTypes from 'prop-types'
 
 import { auth, db } from '../../firebase'
 import * as routes from '../../constants/routes'
+import { byPropKey, FormInput } from '../common'
 import styles from './SignUp.css'
-
-const byPropKey = (propertyName, value) => () => ({
-  [propertyName]: value,
-})
 
 const SignUpPage = ({ history }) => (
   <div className={styles.container}>
@@ -19,35 +16,6 @@ const SignUpPage = ({ history }) => (
     <SignUpForm history={history} />
   </div>
 )
-
-const FormInput = (props, { bubbleState }) => {
-  const {
-    propertyName,
-    value,
-    type,
-    placeHolder,
-    label,
-  } = props
-
-  return (
-    <Fragment>
-      <label htmlFor={propertyName} className={styles.label}>{label}:</label>
-      <input
-        value={value}
-        onChange={event => bubbleState(propertyName, event.target.value)}
-        type={type}
-        placeholder={placeHolder}
-        id={propertyName}
-        className={styles.input}
-        autoComplete='off'
-      />
-    </Fragment>
-  )
-}
-
-FormInput.contextTypes = {
-  bubbleState: PropTypes.func,
-}
 
 const INITIAL_STATE = {
   displayName: '',
