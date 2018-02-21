@@ -12,7 +12,7 @@
   font-weight: 800;
   color: var(--blue);
   cursor: pointer;
-  padding: 8px;
+  padding: 5px 8px;
   position: relative;
   display: inline-block;
   margin-left: 15px;
@@ -31,4 +31,20 @@
 .link:hover::before,
 .active::before {
   max-width: 100%;
+}
+.signoutbtn {
+  background-color: var(--green);
+  border: 2px solid var(--pea);
+  color: var(--coal);
+  font-size: 1.5em;
+  font-weight: 800;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-left: 10px;
+  text-transform: uppercase;
+  transition: box-shadow 0.2s;
+  cursor: pointer;
+}
+.signoutbtn:hover {
+  box-shadow: var(--glow);
 }

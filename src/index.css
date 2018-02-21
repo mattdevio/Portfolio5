@@ -8,6 +8,7 @@
   --blue:    #3a5369;
   --font:    "hypatia-sans-pro", sans-serif;
   --wrapper: 1000px;
+  --glow: 0 5px 15px rgba(145, 92, 182, .4);
 }
 
 /* -------------------- CSS RESET -------------------- */
@@ -66,4 +67,7 @@ body {
 }
 * {
   box-sizing: border-box;
+}
+hr {
+  margin: 15px 0;
 }

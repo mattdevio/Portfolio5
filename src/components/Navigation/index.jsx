@@ -1,7 +1,11 @@
 import React, { Fragment } from 'react'
 import { connect } from 'react-redux'
-import { NavLink, withRouter } from 'react-router-dom'
+import {
+  NavLink,
+  withRouter,
+} from 'react-router-dom'
 
+import { auth } from '../../firebase'
 import styles from './Navigation.css'
 import * as routes from '../../constants/routes'
 
@@ -30,8 +34,19 @@ const NoAuthNav = () => (
 
 const AuthNav = () => (
   <Fragment>
-    <WayLink to={routes.LANDING}>Home</WayLink>
+    <WayLink to={routes.MY_BUDGET}>My Budget</WayLink>
+    <SignOutButton />
   </Fragment>
+)
+
+const SignOutButton = () => (
+  <button
+    type='button'
+    onClick={auth.doSignOut}
+    className={styles.signoutbtn}
+  >
+    Sign Out
+  </button>
 )
 
 const mapStateToProps = state => ({

@@ -57,17 +57,11 @@
   display: inline-block;
   text-align: center;
   position: relative;
-  margin: 5px 0 5px 15px;
+  margin: 0 0 0 15px;
   transition: all 0.2s;
 }
 .signup:hover{
-  box-shadow: 0 8px 6px -6px black;
-  transform: translateY(-3px);
-}
-.signup:active{
-  transform: translateY(0);
-  box-shadow: none;
-  transition: none;
+  box-shadow: var(--glow);
 }
 .signup:focus{
   outline: none;

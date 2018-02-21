@@ -45,17 +45,11 @@
   display: inline-block;
   text-align: center;
   position: relative;
-  margin: 5px 0 10px 15px;
+  margin: 0 0 0 15px;
   transition: all 0.2s;
 }
 .signin:hover {
-  box-shadow: 0 8px 6px -6px black;
-  transform: translateY(-3px);
-}
-.signin:active {
-  transform: translateY(0);
-  box-shadow: none;
-  transition: none;
+  box-shadow: var(--glow);
 }
 .signin:focus {
   outline: none;
