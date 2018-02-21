@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withRouter } from 'react-router-dom'
+import swal from 'sweetalert'
 
 import styles from './ForgotPassword.css'
 import { auth } from '../../firebase'
@@ -42,8 +43,10 @@ class PasswordForgetForm extends Component {
     auth.doPasswordReset(email)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }))
-        alert('Check Your Email!')
-        history.push(routes.SIGN_IN)
+        swal('Message Sent!', 'Plase check your email for the password reset.')
+          .then(() => {
+            history.push(routes.SIGN_IN)
+          })
       })
       .catch((error) => {
         this.setState(byPropKey('error', error))
