@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { withRouter } from 'react-router-dom'
 
 import styles from './ForgotPassword.css'
 import { auth } from '../../firebase'
-// import * as routes from '../../constants/routes'
+import * as routes from '../../constants/routes'
 import { byPropKey, FormInput } from '../common'
 
-const ForgotPasswordPage = () => (
+const ForgotPasswordPage = ({ history }) => (
   <div className={styles.container}>
     <h1>Forgot Your Password?</h1>
     <p>We can send a reset request to your email!</p>
-    <PasswordForgetForm />
+    <PasswordForgetForm history={history} />
   </div>
 )
 
@@ -37,10 +38,12 @@ class PasswordForgetForm extends Component {
   onSubmit(event) {
     event.preventDefault()
     const { email } = this.state
+    const { history } = this.props
     auth.doPasswordReset(email)
       .then(() => {
         this.setState(() => ({ ...INITIAL_STATE }))
         alert('Check Your Email!')
+        history.push(routes.SIGN_IN)
       })
       .catch((error) => {
         this.setState(byPropKey('error', error))
@@ -79,4 +82,4 @@ PasswordForgetForm.childContextTypes = {
   bubbleState: PropTypes.func,
 }
 
-export default ForgotPasswordPage
+export default withRouter(ForgotPasswordPage)
