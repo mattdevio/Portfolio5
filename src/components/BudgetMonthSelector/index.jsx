@@ -10,8 +10,6 @@ class BudgetMonthSelector extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      currentMonth: moment().format('MMMM'),
-      currentYear: moment().format('YYYY'),
       monthsShort: moment.monthsShort(),
     }
     this.mountMonthClick = this.mountMonthClick.bind(this)
@@ -36,21 +34,24 @@ class BudgetMonthSelector extends Component {
 
   render() {
     const {
-      currentMonth,
-      currentYear,
       monthsShort,
     } = this.state
 
-    const prevYear = (+currentYear - 1).toString()
-    const nextYear = (+currentYear + 1).toString()
+    const {
+      budgetYear,
+      budgetMonth,
+    } = this.props
+
+    const prevYear = (+budgetYear - 1).toString()
+    const nextYear = (+budgetYear + 1).toString()
 
     return (
       <div className={styles.container}>
         <div className={styles.topbar}>
-          <h1 className={styles.month}>{currentMonth}<span>{currentYear}</span></h1>
+          <h1 className={styles.month}>{budgetMonth}<span>{budgetYear}</span></h1>
           <ul className={styles.yearBtnGroup}>
             <li><button onClick={this.mountYearClick(prevYear)}>{prevYear}</button></li>
-            <li className={styles.tag}>{currentYear}</li>
+            <li className={styles.tag}>{budgetYear}</li>
             <li><button onClick={this.mountYearClick(nextYear)}>{nextYear}</button></li>
           </ul>
         </div>
@@ -58,7 +59,7 @@ class BudgetMonthSelector extends Component {
           {monthsShort.map((month) => {
             const btnMonth = moment(month, 'MMM').format('MMMM')
             let s = styles.monthBtn
-            s += (btnMonth === currentMonth) ? ` ${styles.active}` : ''
+            s += (btnMonth === budgetMonth) ? ` ${styles.active}` : ''
             return (
               <button className={s} key={month} onClick={this.mountMonthClick(btnMonth)}>
                 <span>{month}</span>
@@ -72,11 +73,19 @@ class BudgetMonthSelector extends Component {
 }
 
 const mapStateToProps = state => ({
-
+  budgetYear: state.budgetState.budgetYear,
+  budgetMonth: state.budgetState.budgetMonth,
 })
 
 const mapDispatchToProps = dispatch => ({
-
+  setBudgetYear: budgetYear => dispatch({
+    type: 'SET_BUDGET_YEAR',
+    budgetYear,
+  }),
+  setBudgetMonth: budgetMonth => dispatch({
+    type: 'SET_BUDGET_MONTH',
+    budgetMonth,
+  }),
 })
 
-export default BudgetMonthSelector
+export default connect(mapStateToProps, mapDispatchToProps)(BudgetMonthSelector)
