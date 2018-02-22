@@ -4,6 +4,7 @@ import { compose } from 'recompose'
 
 import { db } from '../../firebase'
 import withAuthorization from '../withAuthorization'
+import BudgetMonthSelector from '../BudgetMonthSelector'
 
 import styles from './MyBudget.css'
 
@@ -22,13 +23,17 @@ class MyBudgetPage extends Component {
   }
 
   render() {
+    const {
+      displayName,
+    } = this.props
+
     return (
       <div className={styles.container}>
         <aside className={styles.left}>
-          <h1>Left</h1>
+          <h1 className={styles.welcome}>Hello, {displayName}</h1>
         </aside>
         <section className={styles.right}>
-          <h1>Right</h1>
+          <BudgetMonthSelector />
         </section>
       </div>
     )
