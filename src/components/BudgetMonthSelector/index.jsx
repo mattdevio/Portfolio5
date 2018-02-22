@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import moment from 'moment'
 
 import styles from './BudgetMonthSelector.css'
-import { byPropKey } from '../common'
 
 class BudgetMonthSelector extends Component {
 
@@ -12,24 +11,23 @@ class BudgetMonthSelector extends Component {
     this.state = {
       monthsShort: moment.monthsShort(),
     }
-    this.mountMonthClick = this.mountMonthClick.bind(this)
-    this.mountYearClick = this.mountYearClick.bind(this)
   }
 
   componentDidMount() {
-    console.log('cdm')
-  }
-
-  mountMonthClick(monthString) {
-    return () => {
-      this.setState(byPropKey('currentMonth', monthString))
+    const {
+      budgetYear,
+      budgetMonth,
+      setBudgetYear,
+      setBudgetMonth,
+    } = this.props
+    const now = moment()
+    if (!budgetYear) {
+      setBudgetYear(now.format('YYYY'))
     }
-  }
-
-  mountYearClick(yearString) {
-    return () => {
-      this.setState(byPropKey('currentYear', yearString))
+    if (!budgetMonth) {
+      setBudgetMonth(now.format('MMMM'))
     }
+    console.dir(budgetMonth)
   }
 
   render() {
@@ -40,6 +38,8 @@ class BudgetMonthSelector extends Component {
     const {
       budgetYear,
       budgetMonth,
+      setBudgetYear,
+      setBudgetMonth,
     } = this.props
 
     const prevYear = (+budgetYear - 1).toString()
@@ -50,9 +50,17 @@ class BudgetMonthSelector extends Component {
         <div className={styles.topbar}>
           <h1 className={styles.month}>{budgetMonth}<span>{budgetYear}</span></h1>
           <ul className={styles.yearBtnGroup}>
-            <li><button onClick={this.mountYearClick(prevYear)}>{prevYear}</button></li>
+            <li>
+              <button onClick={() => setBudgetYear(prevYear)}>
+                {prevYear}
+              </button>
+            </li>
             <li className={styles.tag}>{budgetYear}</li>
-            <li><button onClick={this.mountYearClick(nextYear)}>{nextYear}</button></li>
+            <li>
+              <button onClick={() => setBudgetYear(nextYear)}>
+                {nextYear}
+              </button>
+            </li>
           </ul>
         </div>
         <div className={styles.select}>
@@ -61,7 +69,7 @@ class BudgetMonthSelector extends Component {
             let s = styles.monthBtn
             s += (btnMonth === budgetMonth) ? ` ${styles.active}` : ''
             return (
-              <button className={s} key={month} onClick={this.mountMonthClick(btnMonth)}>
+              <button className={s} key={month} onClick={() => setBudgetMonth(btnMonth)}>
                 <span>{month}</span>
               </button>
             )
