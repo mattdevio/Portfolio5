@@ -24,7 +24,12 @@ class MyBudgetPage extends Component {
   render() {
     return (
       <div className={styles.container}>
-        <h1>Hello {this.props.displayName.toUpperCase()}!</h1>
+        <aside className={styles.left}>
+          <h1>Left</h1>
+        </aside>
+        <section className={styles.right}>
+          <h1>Right</h1>
+        </section>
       </div>
     )
   }
