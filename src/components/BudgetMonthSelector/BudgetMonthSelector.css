@@ -6,11 +6,11 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  margin-bottom: 15px;
 }
 .month {
   font-weight: 800;
   font-size: 2em;
-  margin-bottom: 15px;
   display: inline-block;
 }
 .month span {
@@ -55,4 +55,25 @@
 }
 .yearBtnGroup li{
   display: inline-block;
+}
+.yearBtnGroup li.tag {
+  font-size: 2em;
+  font-weight: 800;
+  color: var(--coal);
+  text-transform: uppercase;
+  text-decoration: underline;
+}
+.yearBtnGroup li button{
+  font-weight: 400;
+  font-size: 1.5em;
+  border: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+.yearBtnGroup li button:hover {
+  text-decoration: underline;
+}
+.yearBtnGroup li button:focus {
+  outline: none;
 }

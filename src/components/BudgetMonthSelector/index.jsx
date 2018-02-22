@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import moment from 'moment'
 
 import styles from './BudgetMonthSelector.css'
+import { byPropKey } from '../common'
 
 class BudgetMonthSelector extends Component {
 
@@ -13,6 +15,7 @@ class BudgetMonthSelector extends Component {
       monthsShort: moment.monthsShort(),
     }
     this.mountMonthClick = this.mountMonthClick.bind(this)
+    this.mountYearClick = this.mountYearClick.bind(this)
   }
 
   componentDidMount() {
@@ -21,9 +24,13 @@ class BudgetMonthSelector extends Component {
 
   mountMonthClick(monthString) {
     return () => {
-      this.setState({
-        currentMonth: monthString,
-      })
+      this.setState(byPropKey('currentMonth', monthString))
+    }
+  }
+
+  mountYearClick(yearString) {
+    return () => {
+      this.setState(byPropKey('currentYear', yearString))
     }
   }
 
@@ -34,14 +41,17 @@ class BudgetMonthSelector extends Component {
       monthsShort,
     } = this.state
 
+    const prevYear = (+currentYear - 1).toString()
+    const nextYear = (+currentYear + 1).toString()
+
     return (
       <div className={styles.container}>
         <div className={styles.topbar}>
           <h1 className={styles.month}>{currentMonth}<span>{currentYear}</span></h1>
           <ul className={styles.yearBtnGroup}>
-            <li><button>&lt;</button></li>
-            <li>YEAR</li>
-            <li><button>&gt;</button></li>
+            <li><button onClick={this.mountYearClick(prevYear)}>{prevYear}</button></li>
+            <li className={styles.tag}>{currentYear}</li>
+            <li><button onClick={this.mountYearClick(nextYear)}>{nextYear}</button></li>
           </ul>
         </div>
         <div className={styles.select}>
@@ -60,5 +70,13 @@ class BudgetMonthSelector extends Component {
     )
   }
 }
+
+const mapStateToProps = state => ({
+
+})
+
+const mapDispatchToProps = dispatch => ({
+
+})
 
 export default BudgetMonthSelector
