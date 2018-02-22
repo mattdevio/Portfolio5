@@ -2,13 +2,20 @@
   width: 100%;
   background-color: ;
 }
+.topbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 .month {
   font-weight: 800;
   font-size: 2em;
   margin-bottom: 15px;
+  display: inline-block;
 }
 .month span {
   font-weight: 400;
+  padding-left: 5px;
 }
 .select {
   display: flex;
@@ -19,15 +26,19 @@
 .monthBtn {
   width: 50px;
   height: 50px;
+  padding: 0;
   display: inline-block;
   border: 1px solid var(--coal);
   position: relative;
   cursor: pointer;
 }
-.monthBtn:hover{
+.monthBtn:focus {
+  outline: none;
+}
+.monthBtn:hover {
   background-color: var(--green);
 }
-.monthBtn span{
+.monthBtn span {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -37,4 +48,11 @@
 .active {
   border-width: 3px;
   background-color: var(--green);
+}
+.yearBtnGroup {
+  display: inline-block;
+  margin-left: auto;
+}
+.yearBtnGroup li{
+  display: inline-block;
 }

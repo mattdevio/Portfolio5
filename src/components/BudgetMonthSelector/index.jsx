@@ -12,10 +12,19 @@ class BudgetMonthSelector extends Component {
       currentYear: moment().format('YYYY'),
       monthsShort: moment.monthsShort(),
     }
+    this.mountMonthClick = this.mountMonthClick.bind(this)
   }
 
   componentDidMount() {
     console.log('cdm')
+  }
+
+  mountMonthClick(monthString) {
+    return () => {
+      this.setState({
+        currentMonth: monthString,
+      })
+    }
   }
 
   render() {
@@ -29,16 +38,21 @@ class BudgetMonthSelector extends Component {
       <div className={styles.container}>
         <div className={styles.topbar}>
           <h1 className={styles.month}>{currentMonth}<span>{currentYear}</span></h1>
+          <ul className={styles.yearBtnGroup}>
+            <li><button>&lt;</button></li>
+            <li>YEAR</li>
+            <li><button>&gt;</button></li>
+          </ul>
         </div>
         <div className={styles.select}>
           {monthsShort.map((month) => {
-            let s = styles.monthBtn
             const btnMonth = moment(month, 'MMM').format('MMMM')
+            let s = styles.monthBtn
             s += (btnMonth === currentMonth) ? ` ${styles.active}` : ''
             return (
-              <div className={s} key={month}>
+              <button className={s} key={month} onClick={this.mountMonthClick(btnMonth)}>
                 <span>{month}</span>
-              </div>
+              </button>
             )
           })}
         </div>
