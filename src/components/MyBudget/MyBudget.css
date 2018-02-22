@@ -5,18 +5,17 @@
   height: 100%;
   max-width: var(--wrapper);
   margin: 0 auto;
-  border-left: 1px solid #000;
-  border-right: 1px solid #000;
-}
-.container h1 {
-  font-size: 3em;
-  font-weight: 800;
 }
 .left {
   width: 35%;
   height: 100%;
   padding: 15px 7.5px 15px 15px;
-  border-left: 1px solid #000;
+}
+.welcome {
+  color: var(--coal);
+  text-align: center;
+  font-size: 2em;
+  font-weight: 800;
 }
 .right {
   width: 65%;

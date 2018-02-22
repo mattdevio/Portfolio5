@@ -1,5 +1,24 @@
 .container {
-  border: 1px solid #000;
   min-height: 100px;
   width: 100%;
+  background-color: ;
+}
+.month {
+  font-weight: 800;
+  font-size: 2em;
+}
+.month span {
+  font-weight: 400;
+}
+.select {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 75px;
+}
+.select div {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border: 1px solid #000;
 }

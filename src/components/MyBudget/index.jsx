@@ -30,10 +30,11 @@ class MyBudgetPage extends Component {
     return (
       <div className={styles.container}>
         <aside className={styles.left}>
-          <h1 className={styles.welcome}>Hello, {displayName}</h1>
+          <h1 className={styles.welcome}>Hello, {displayName}!</h1>
         </aside>
         <section className={styles.right}>
           <BudgetMonthSelector />
+          <hr />
         </section>
       </div>
     )

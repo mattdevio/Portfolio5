@@ -8,9 +8,14 @@ class BudgetMonthSelector extends Component {
   }
 
   render() {
+    const month = 'January'
+    const year = '2018'
     return (
       <div className={styles.container}>
-        <h1>Budget Month Selector</h1>
+        <h1 className={styles.month}>{month}<span>{year}</span></h1>
+        <div className={styles.select}>
+          <div>Month</div>
+        </div>
       </div>
     )
   }
