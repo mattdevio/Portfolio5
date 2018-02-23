@@ -67,6 +67,25 @@
 .-Navigation-signoutbtn-o57Sct-:hover {
   box-shadow: var(--glow);
 }
+.-common-label-2CgBuX- {
+  display: block;
+  font-weight: 800;
+  font-size: 2em;
+  padding: 0;
+  margin-bottom: 5px;
+}
+.-common-input-3R9VUp- {
+  display: block;
+  width: 100%;
+  padding: 5px;
+  font-size: 2em;
+  margin-bottom: 10px;
+  border: 3px solid #fff;
+}
+.-common-input-3R9VUp-:focus {
+  outline: none;
+  border-color: var(--blue);
+}
 .-LandingPage-container-3C7fLA- {
   display: block;
   width: 100%;
@@ -106,26 +125,7 @@
 }
 .-LandingPage-signup-2kR01p-:hover{
   box-shadow: var(--glow);
-}.-common-label-2CgBuX- {
-  display: block;
-  font-weight: 800;
-  font-size: 2em;
-  padding: 0;
-  margin-bottom: 5px;
-}
-.-common-input-3R9VUp- {
-  display: block;
-  width: 100%;
-  padding: 5px;
-  font-size: 2em;
-  margin-bottom: 10px;
-  border: 3px solid #fff;
-}
-.-common-input-3R9VUp-:focus {
-  outline: none;
-  border-color: var(--blue);
-}
-.-SignUp-container-1uHW05- {
+}.-SignUp-container-1uHW05- {
   display: block;
   width: 100%;
   max-width: calc(var(--wrapper) / 2);

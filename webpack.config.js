@@ -109,6 +109,7 @@ const webpackConfig = {
 // minify production build
 if (process.env.NODE_ENV === 'production') {
   webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin())
+  console.log('Building For Production')
 }
 
 module.exports = webpackConfig
