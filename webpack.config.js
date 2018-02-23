@@ -3,12 +3,11 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 const path = require('path')
 
-// 
 const sourceMap = process.env.NODE_ENV === 'development'
   ? 'inline-source-map'
   : 'source-map'
 
-module.exports = {
+const webpackConfig = {
   entry: {
     vender: ['react', 'react-dom', 'react-router-dom', 'firebase', 'prop-types'],
     app: './src/index.jsx',
@@ -99,6 +98,17 @@ module.exports = {
       filename: 'app.css',
       allChunks: true
     }),
+    // Define env variable for all plugins
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+    }),
   ],
 
-} // end of module.exports
+} // end of webpackConfig
+
+// minify production build
+if (process.env.NODE_ENV === 'production') {
+  webpackConfig.plugins.push(new webpack.optimize.UglifyJsPlugin())
+}
+
+module.exports = webpackConfig
