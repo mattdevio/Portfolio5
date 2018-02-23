@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import * as routes from '../../constants/routes'
+import reRouteAuthUsers from '../routeauth'
 
 import styles from './LandingPage.css'
 import landingImg from '../../img/landing.png'
@@ -23,4 +24,4 @@ const LandingPage = () => (
   </div>
 )
 
-export default LandingPage
+export default reRouteAuthUsers(LandingPage)

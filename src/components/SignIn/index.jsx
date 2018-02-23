@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import { compose } from 'recompose'
 import { withRouter, Link } from 'react-router-dom'
 
 import { auth } from '../../firebase'
 import { byPropKey, FormInput } from '../common'
 import styles from './SignIn.css'
 import * as routes from '../../constants/routes'
+import reRouteAuthUsers from '../routeauth'
 
 const SignInPage = ({ history }) => (
   <div className={styles.container}>
@@ -110,4 +112,7 @@ SignInForm.childContextTypes = {
   bubbleState: PropTypes.func,
 }
 
-export default withRouter(SignInPage)
+export default compose(
+  reRouteAuthUsers,
+  withRouter,
+)(SignInPage)
