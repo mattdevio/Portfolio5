@@ -18,18 +18,28 @@ class BudgetMonthSelector extends Component {
     const {
       budgetYear,
       budgetMonth,
-      setBudgetYear,
-      setBudgetMonth,
-      authUser,
     } = this.props
     const now = moment()
     if (!budgetYear) {
-      setBudgetYear(authUser.uid, now.format('YYYY'))
+      this.setBudgetYear(now.format('YYYY'))
     }
     if (!budgetMonth) {
-      setBudgetMonth(now.format('MMMM'))
+      this.setBudgetMonth(now.format('MMMM'))
     }
-    console.dir(budgetMonth)
+  }
+
+  setBudgetMonth(month) {
+    this.props.setBudgetMonth(
+      this.props.authUser.uid,
+      month,
+    )
+  }
+
+  setBudgetYear(year) {
+    this.props.setBudgetYear(
+      this.props.authUser.uid,
+      year,
+    )
   }
 
   render() {
@@ -40,9 +50,6 @@ class BudgetMonthSelector extends Component {
     const {
       budgetYear,
       budgetMonth,
-      setBudgetYear,
-      setBudgetMonth,
-      authUser,
     } = this.props
 
     const prevYear = (+budgetYear - 1).toString()
@@ -54,13 +61,13 @@ class BudgetMonthSelector extends Component {
           <h1 className={styles.month}>{budgetMonth}<span>{budgetYear}</span></h1>
           <ul className={styles.yearBtnGroup}>
             <li>
-              <button onClick={() => setBudgetYear(authUser, prevYear)}>
+              <button onClick={() => this.setBudgetYear(prevYear)}>
                 {prevYear}
               </button>
             </li>
             <li className={styles.tag}>{budgetYear}</li>
             <li>
-              <button onClick={() => setBudgetYear(authUser, nextYear)}>
+              <button onClick={() => this.setBudgetYear(nextYear)}>
                 {nextYear}
               </button>
             </li>
@@ -72,7 +79,7 @@ class BudgetMonthSelector extends Component {
             let s = styles.monthBtn
             s += (btnMonth === budgetMonth) ? ` ${styles.active}` : ''
             return (
-              <button className={s} key={month} onClick={() => setBudgetMonth(btnMonth)}>
+              <button className={s} key={month} onClick={() => this.setBudgetMonth(btnMonth)}>
                 <span>{month}</span>
               </button>
             )
@@ -90,22 +97,30 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  setBudgetYear: (authUser, budgetYear) => () => {
-    db.setBudgetYear(authUser.uid, budgetYear)
+  setBudgetYear: (uid, budgetYear) => {
+    db.doSetBudgetYear(uid, budgetYear)
       .then(() => {
         dispatch({
           type: 'SET_BUDGET_YEAR',
           budgetYear,
         })
       })
-      .catch((error) => {
-        console.dir(error)
+      .catch((err) => {
+        console.log(err.message)
       })
   },
-  setBudgetMonth: budgetMonth => dispatch({
-    type: 'SET_BUDGET_MONTH',
-    budgetMonth,
-  }),
+  setBudgetMonth: (uid, budgetMonth) => {
+    db.doSetBudgetMonth(uid, budgetMonth)
+      .then(() => {
+        dispatch({
+          type: 'SET_BUDGET_MONTH',
+          budgetMonth,
+        })
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+  },
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BudgetMonthSelector)
