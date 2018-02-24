@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
+import { db } from '../../firebase'
 import styles from './BudgetMonthSelector.css'
 
 class BudgetMonthSelector extends Component {
@@ -19,10 +20,11 @@ class BudgetMonthSelector extends Component {
       budgetMonth,
       setBudgetYear,
       setBudgetMonth,
+      authUser,
     } = this.props
     const now = moment()
     if (!budgetYear) {
-      setBudgetYear(now.format('YYYY'))
+      setBudgetYear(authUser.uid, now.format('YYYY'))
     }
     if (!budgetMonth) {
       setBudgetMonth(now.format('MMMM'))
@@ -40,6 +42,7 @@ class BudgetMonthSelector extends Component {
       budgetMonth,
       setBudgetYear,
       setBudgetMonth,
+      authUser,
     } = this.props
 
     const prevYear = (+budgetYear - 1).toString()
@@ -51,13 +54,13 @@ class BudgetMonthSelector extends Component {
           <h1 className={styles.month}>{budgetMonth}<span>{budgetYear}</span></h1>
           <ul className={styles.yearBtnGroup}>
             <li>
-              <button onClick={() => setBudgetYear(prevYear)}>
+              <button onClick={() => setBudgetYear(authUser, prevYear)}>
                 {prevYear}
               </button>
             </li>
             <li className={styles.tag}>{budgetYear}</li>
             <li>
-              <button onClick={() => setBudgetYear(nextYear)}>
+              <button onClick={() => setBudgetYear(authUser, nextYear)}>
                 {nextYear}
               </button>
             </li>
@@ -83,13 +86,22 @@ class BudgetMonthSelector extends Component {
 const mapStateToProps = state => ({
   budgetYear: state.budgetState.budgetYear,
   budgetMonth: state.budgetState.budgetMonth,
+  authUser: state.sessionState.authUser,
 })
 
 const mapDispatchToProps = dispatch => ({
-  setBudgetYear: budgetYear => dispatch({
-    type: 'SET_BUDGET_YEAR',
-    budgetYear,
-  }),
+  setBudgetYear: (authUser, budgetYear) => () => {
+    db.setBudgetYear(authUser.uid, budgetYear)
+      .then(() => {
+        dispatch({
+          type: 'SET_BUDGET_YEAR',
+          budgetYear,
+        })
+      })
+      .catch((error) => {
+        console.dir(error)
+      })
+  },
   setBudgetMonth: budgetMonth => dispatch({
     type: 'SET_BUDGET_MONTH',
     budgetMonth,
