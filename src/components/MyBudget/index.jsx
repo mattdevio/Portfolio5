@@ -5,6 +5,7 @@ import { compose } from 'recompose'
 import { db } from '../../firebase'
 import withAuthorization from '../withAuthorization'
 import BudgetMonthSelector from '../BudgetMonthSelector'
+import IncomeBlock from '../IncomeBlock'
 
 import styles from './MyBudget.css'
 
@@ -35,6 +36,7 @@ class MyBudgetPage extends Component {
         <section className={styles.right}>
           <BudgetMonthSelector />
           <hr />
+          <IncomeBlock />
         </section>
       </div>
     )

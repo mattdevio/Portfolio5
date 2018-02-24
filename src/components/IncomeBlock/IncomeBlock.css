@@ -1,0 +1,94 @@
+.container {
+  background: var(--iron);
+  padding: 10px;
+}
+.topbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.topbar h1 {
+  font-size: 2em;
+  font-weight: 800;
+  color: var(--coal);
+  margin-left: 30px;
+}
+.topbar span{
+  margin-left: auto;
+}
+.topbar span p{
+  display: inline-block;
+  width: 175px;
+  text-align: right;
+  font-weight: 800;
+  font-size: 2em;
+  color: var(--silver);
+  margin-left: 15px;
+}
+.topbar span p:nth-child(2) {
+  width: 150px;
+}
+.toggleInput {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.inputGroup {
+  position: relative;
+  flex: 1;
+}
+.inputGroup input {
+  display: block;
+  width: calc(100% - 30px);
+  font-size: 2em;
+  padding: 5px;
+  border: 3px solid transparent;
+  margin-left: 30px;
+}
+.inputGroup button {
+  position: absolute;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  width: 30px;
+  font-size: 1.5em;
+  font-weight: 800;
+  background: transparent;
+  cursor: pointer;
+}
+.inputGroup button:hover {
+  background-color: var(--green);
+}
+.inputGroup button:focus {
+  outline: 0;
+}
+.inputGroup button:active {
+  background-color: var(--pea);
+}
+.displayGroup {
+  width: 175px;
+  position: relative;
+  margin-left: 15px;
+}
+.displayGroup input {
+  display: block;
+  width: 100%;
+  font-size: 2em;
+  padding: 5px;
+  text-align: right;
+  border: 3px solid transparent;
+}
+.inputGroup input:focus,
+.displayGroup input:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+.actual {
+  width: 150px;
+  margin-left: 15px;
+  font-size: 2em;
+  text-align: right;
+}
