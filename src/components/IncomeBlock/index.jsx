@@ -14,12 +14,16 @@ const IncomeBlock = () => (
     <div className={styles.toggleInput}>
       <div className={styles.inputGroup}>
         <button>X</button>
-        <input type='text' placeHolder='Budget Label Item'/>
+        <input type='text' placeHolder='Budget Label Item' />
       </div>
       <div className={styles.displayGroup}>
-        <input type='text' placeHolder='$0.00'/>
+        <input type='text' placeHolder='$0.00' />
       </div>
       <p className={styles.actual}>$0.00</p>
+    </div>
+    <hr />
+    <div className={styles.actions}>
+      <button className={styles.addItem}>+ Add Item</button>
     </div>
   </div>
 )
