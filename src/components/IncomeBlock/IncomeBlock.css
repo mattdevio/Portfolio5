@@ -109,6 +109,9 @@
   color: var(--silver);
   cursor: pointer;
 }
+.addItem:focus {
+  outline: 0;
+}
 .addItem:hover {
   background-color: var(--green);
   color: var(--coal);

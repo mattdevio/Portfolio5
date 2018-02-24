@@ -5,6 +5,7 @@ import { compose } from 'recompose'
 import { db } from '../../firebase'
 import withAuthorization from '../withAuthorization'
 import BudgetMonthSelector from '../BudgetMonthSelector'
+import StartNewBudget from '../StartNewBudget'
 import IncomeBlock from '../IncomeBlock'
 
 import styles from './MyBudget.css'
@@ -30,12 +31,13 @@ class MyBudgetPage extends Component {
 
     return (
       <div className={styles.container}>
-        <aside className={styles.left}>
+        <section className={styles.left}>
           <h1 className={styles.welcome}>Hello, {displayName}!</h1>
-        </aside>
+        </section>
         <section className={styles.right}>
           <BudgetMonthSelector />
           <hr />
+          <StartNewBudget />
           <IncomeBlock />
         </section>
       </div>
@@ -46,6 +48,8 @@ class MyBudgetPage extends Component {
 const mapStateToProps = state => ({
   authUser: state.sessionState.authUser,
   displayName: state.userState.displayName,
+  budgetMonth: state.budgetState.budgetMonth,
+  budgetYear: state.budgetState.budgetYear,
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -58,12 +58,14 @@ table {
 /* -------------------- BEYOND THE RESET -------------------- */
 html {
   height: 100%;
+  width: 100%;
 }
 body {
   background: #f9f9f9;
   font-family: var(--font);
   font-size: 62.5%;
   height: 100%;
+  width: 100%;
 }
 * {
   box-sizing: border-box;
