@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
-import swal from 'sweetalert'
 
 import { db } from '../../firebase'
 import styles from './BudgetMonthSelector.css'
@@ -32,14 +31,9 @@ class BudgetMonthSelector extends Component {
           const budgetData = snapshot.val()
           setBudgetExists(!!budgetData)
           if (budgetData && budgetData.income) {
-            const { income } = budgetData
-            const incomeArray = Object.keys(income).map(groupId => ({
-              ...income[groupId],
-              id: groupId,
-            }))
-            setBudgetIncomeGroups(incomeArray)
+            setBudgetIncomeGroups(budgetData.income)
           } else {
-            setBudgetIncomeGroups([])
+            setBudgetIncomeGroups({})
           }
         })
         .catch((error) => {

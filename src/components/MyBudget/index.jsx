@@ -18,7 +18,6 @@ class MyBudgetPage extends Component {
       setDisplayName,
       setBudgetYear,
       setBudgetMonth,
-      selectedBudgetExists,
     } = this.props
     db.getUserData(this.props.authUser.uid)
       .then((snapshot) => {
