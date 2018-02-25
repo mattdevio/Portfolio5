@@ -2,6 +2,7 @@ const INITIAL_STATE = {
   budgetYear: '',
   budgetMonth: '',
   selectedBudgetExists: false,
+  budgetInputGroups: [],
 }
 
 const applySetBudgetYear = (state, action) => ({
@@ -19,6 +20,11 @@ const applySetBudgetExists = (state, action) => ({
   selectedBudgetExists: action.selectedBudgetExists,
 })
 
+const applySetBudgetInputGroups = (state, action) => ({
+  ...state,
+  budgetInputGroups: action.inputBudgetGroups,
+})
+
 function budgetReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'SET_BUDGET_YEAR': {
@@ -29,6 +35,9 @@ function budgetReducer(state = INITIAL_STATE, action) {
     }
     case 'SET_BUDGET_EXISTS': {
       return applySetBudgetExists(state, action)
+    }
+    case 'SET_BUDGET_INPUT_GROUPS': {
+      return applySetBudgetInputGroups(state, action)
     }
     default: return state
   }

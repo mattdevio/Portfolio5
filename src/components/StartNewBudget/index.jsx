@@ -50,6 +50,7 @@ const mapStateToProps = state => ({
   authUser: state.sessionState.authUser,
   budgetYear: state.budgetState.budgetYear,
   budgetMonth: state.budgetState.budgetMonth,
+  selectedBudgetExists: state.budgetState.selectedBudgetExists,
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import moment from 'moment'
+import swal from 'sweetalert'
 
 import { db } from '../../firebase'
 import styles from './BudgetMonthSelector.css'
@@ -20,15 +21,26 @@ class BudgetMonthSelector extends Component {
       budgetMonth,
       authUser,
       setBudgetExists,
+      selectedBudgetExists,
+      setBudgetIncomeGroups,
     } = this.props
-    if (budgetYear !== nextProps.budgetYear || budgetMonth !== nextProps.budgetMonth) {
+    if (budgetYear !== nextProps.budgetYear ||
+      budgetMonth !== nextProps.budgetMonth ||
+      selectedBudgetExists !== nextProps.selectedBudgetExists) {
       db.doGetBudgetInformation(authUser.uid, nextProps.budgetMonth, nextProps.budgetYear)
         .then((snapshot) => {
           const budgetData = snapshot.val()
           setBudgetExists(!!budgetData)
-          /*
-            BUDGET LOADING SHOULD GO HERE
-           */
+          if (budgetData && budgetData.income) {
+            const { income } = budgetData
+            const incomeArray = Object.keys(income).map(groupId => ({
+              ...income[groupId],
+              id: groupId,
+            }))
+            setBudgetIncomeGroups(incomeArray)
+          } else {
+            setBudgetIncomeGroups([])
+          }
         })
         .catch((error) => {
           console.log(error.message)
@@ -104,6 +116,7 @@ const mapStateToProps = state => ({
   budgetYear: state.budgetState.budgetYear,
   budgetMonth: state.budgetState.budgetMonth,
   authUser: state.sessionState.authUser,
+  selectedBudgetExists: state.budgetState.selectedBudgetExists,
 })
 
 const mapDispatchToProps = dispatch => ({
@@ -134,6 +147,10 @@ const mapDispatchToProps = dispatch => ({
   setBudgetExists: selectedBudgetExists => dispatch({
     type: 'SET_BUDGET_EXISTS',
     selectedBudgetExists,
+  }),
+  setBudgetIncomeGroups: budgetInputGroups => dispatch({
+    type: 'SET_BUDGET_INPUT_GROUPS',
+    budgetInputGroups,
   }),
 })
 
