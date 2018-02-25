@@ -23,13 +23,5 @@ export const doGetBudgetInformation = (id, budgetMonth, budgetYear) =>
   db.ref(`users/${id}/budget/${budgetYear}${budgetMonth}`).once('value')
 
 // init a budget
-export const doInitBudgetInformation = (id, budgetMonth, budgetYear) =>
-  db.ref(`users/${id}/budget`).child(budgetYear + budgetMonth).set({
-    income: {
-      0: {
-        label: '',
-        planned: '$0.00',
-        recieved: '$.00',
-      },
-    },
-  })
+export const doInitBudgetInformation = (id, budgetMonth, budgetYear, struct) =>
+  db.ref(`users/${id}/budget`).child(budgetYear + budgetMonth).set(struct)

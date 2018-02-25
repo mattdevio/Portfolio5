@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 
 import styles from './StartNewBudget.css'
 import { db } from '../../firebase'
+import renderStruct from './initBudgetStructure'
 
 class StartNewBudget extends Component {
   constructor(props) {
@@ -15,10 +16,18 @@ class StartNewBudget extends Component {
       authUser,
       budgetMonth,
       budgetYear,
+      setBudgetExists,
     } = this.props
-    db.doInitBudgetInformation(authUser.uid, budgetMonth, budgetYear)
-      .then(() => alert('budget created'))
-      .catch(error => alert(error.message))
+    db.doInitBudgetInformation(
+      authUser.uid,
+      budgetMonth,
+      budgetYear,
+      renderStruct(),
+    ).then(() => {
+      setBudgetExists(true)
+    }).catch((err) => {
+      console.dir(err)
+    })
   }
 
   render() {
@@ -43,4 +52,11 @@ const mapStateToProps = state => ({
   budgetMonth: state.budgetState.budgetMonth,
 })
 
-export default connect(mapStateToProps)(StartNewBudget)
+const mapDispatchToProps = dispatch => ({
+  setBudgetExists: selectedBudgetExists => dispatch({
+    type: 'SET_BUDGET_EXISTS',
+    selectedBudgetExists,
+  }),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(StartNewBudget)
