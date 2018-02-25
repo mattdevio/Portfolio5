@@ -271,13 +271,167 @@
 }
 .-BudgetMonthSelector-yearBtnGroup-2raFij- li button:focus {
   outline: none;
+}.-StartNewBudget-container-xpzSBU- {
+  background-color: var(--iron);
+  padding: 15px;
+}
+.-StartNewBudget-container-xpzSBU- h1 {
+  font-size: 3em;
+  font-weight: 800;
+  display: block;
+  text-align: center;
+  color: var(--coal);
+  margin-bottom: 15px;
+}
+.-StartNewBudget-container-xpzSBU- button {
+  border: transparent;
+  font-size: 1.5em;
+  font-weight: 800;
+  border-radius: 5px;
+  display: block;
+  width: 320px;
+  margin: 0 auto;
+  padding: 5px;
+  border: 2px solid var(--pea);
+  text-transform: uppercase;
+  color: var(--coal);
+  background-color: var(--green);
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+}
+.-StartNewBudget-container-xpzSBU- button:focus {
+  outline: 0;
+}
+.-StartNewBudget-container-xpzSBU- button:hover {
+  box-shadow: var(--glow);
+}.-IncomeBlock-container-39FqHD- {
+  background: var(--iron);
+  padding: 10px;
+}
+.-IncomeBlock-container-39FqHD- hr {
+  margin: 5px 0;
+}
+.-IncomeBlock-topbar-KSFTcv- {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+.-IncomeBlock-topbar-KSFTcv- h1 {
+  font-size: 2em;
+  font-weight: 800;
+  color: var(--coal);
+  margin-left: 30px;
+}
+.-IncomeBlock-topbar-KSFTcv- span{
+  margin-left: auto;
+}
+.-IncomeBlock-topbar-KSFTcv- span p{
+  display: inline-block;
+  width: 175px;
+  text-align: right;
+  font-weight: 800;
+  font-size: 2em;
+  color: var(--silver);
+  margin-left: 15px;
+}
+.-IncomeBlock-topbar-KSFTcv- span p:nth-child(2) {
+  width: 150px;
+}
+.-IncomeBlock-toggleInput-6x43gq- {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.-IncomeBlock-inputGroup-1UPifT- {
+  position: relative;
+  flex: 1;
+}
+.-IncomeBlock-inputGroup-1UPifT- input {
+  display: block;
+  width: calc(100% - 30px);
+  font-size: 2em;
+  padding: 5px;
+  border: 3px solid transparent;
+  margin-left: 30px;
+}
+.-IncomeBlock-inputGroup-1UPifT- button {
+  position: absolute;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  width: 30px;
+  font-size: 1.5em;
+  font-weight: 800;
+  background: transparent;
+  cursor: pointer;
+  color: var(--silver);
+}
+.-IncomeBlock-inputGroup-1UPifT- button:hover {
+  background-color: var(--green);
+  color: var(--coal);
+}
+.-IncomeBlock-inputGroup-1UPifT- button:focus {
+  outline: 0;
+}
+.-IncomeBlock-inputGroup-1UPifT- button:active {
+  background-color: var(--pea);
+}
+.-IncomeBlock-displayGroup-1DEYvu- {
+  width: 175px;
+  position: relative;
+  margin-left: 15px;
+}
+.-IncomeBlock-displayGroup-1DEYvu- input {
+  display: block;
+  width: 100%;
+  font-size: 2em;
+  padding: 5px;
+  text-align: right;
+  border: 3px solid transparent;
+}
+.-IncomeBlock-inputGroup-1UPifT- input:focus,
+.-IncomeBlock-displayGroup-1DEYvu- input:focus {
+  outline: none;
+  border-color: var(--blue);
+}
+.-IncomeBlock-actual-2Gvjda- {
+  width: 150px;
+  margin-left: 15px;
+  font-size: 2em;
+  text-align: right;
+}
+.-IncomeBlock-actions-sRwi_J- {
+  display: flex;
+}
+.-IncomeBlock-addItem--Cc3D9- {
+  font-size: 1.5em;
+  font-weight: 800;
+  padding: 5px;
+  border: 3px solid transparent;
+  margin-left: auto;
+  color: var(--silver);
+  cursor: pointer;
+}
+.-IncomeBlock-addItem--Cc3D9-:focus {
+  outline: 0;
+}
+.-IncomeBlock-addItem--Cc3D9-:hover {
+  background-color: var(--green);
+  color: var(--coal);
+}
+.-IncomeBlock-addItem--Cc3D9-:active {
+  background-color: var(--pea)
 }.-MyBudget-container-25emxy- {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 100%;
   max-width: var(--wrapper);
   margin: 0 auto;
+  flex: 1;
 }
 .-MyBudget-left-2GYvGp- {
   width: 35%;
@@ -294,6 +448,7 @@
   width: 65%;
   height: 100%;
   padding: 15px 15px 15px 7.5px;
+  overflow: auto;
 }.-SignIn-container-1cU965-{
   display: block;
   width: 100%;
@@ -513,12 +668,14 @@ table {
 /* -------------------- BEYOND THE RESET -------------------- */
 html {
   height: 100%;
+  width: 100%;
 }
 body {
   background: #f9f9f9;
   font-family: var(--font);
   font-size: 62.5%;
   height: 100%;
+  width: 100%;
 }
 * {
   box-sizing: border-box;
