@@ -5,6 +5,11 @@ import moment from 'moment'
 import { db } from '../../firebase'
 import styles from './BudgetMonthSelector.css'
 
+/**
+ * BudgetMonthSelector - React Component
+ * In charge of selecting, creating, and saving budgets for a
+ * specific budget month & year.
+ */
 class BudgetMonthSelector extends Component {
 
   constructor(props) {
@@ -14,6 +19,11 @@ class BudgetMonthSelector extends Component {
     }
   }
 
+  /**
+   * If a new budget year & month is selected,
+   * download the related budget data from the firebase db
+   * and store it in the global redux state
+   */
   componentWillReceiveProps(nextProps) {
     const {
       budgetYear,
@@ -42,6 +52,10 @@ class BudgetMonthSelector extends Component {
     }
   }
 
+  /**
+   * Save the current budget month to the redux store &
+   * save the month in firebase
+   */
   setBudgetMonth(month) {
     const { authUser } = this.props
     this.props.setBudgetMonth(
@@ -50,6 +64,10 @@ class BudgetMonthSelector extends Component {
     )
   }
 
+  /**
+   * Save the current budget year to the redux store &
+   * save the year in firebase
+   */
   setBudgetYear(year) {
     const { authUser } = this.props
     this.props.setBudgetYear(
@@ -58,6 +76,9 @@ class BudgetMonthSelector extends Component {
     )
   }
 
+  /**
+   * Display the component
+   */
   render() {
     const {
       monthsShort,
@@ -106,6 +127,7 @@ class BudgetMonthSelector extends Component {
   }
 }
 
+// map state from redux store to the component's props
 const mapStateToProps = state => ({
   budgetYear: state.budgetState.budgetYear,
   budgetMonth: state.budgetState.budgetMonth,
@@ -113,7 +135,9 @@ const mapStateToProps = state => ({
   selectedBudgetExists: state.budgetState.selectedBudgetExists,
 })
 
+// map dispatch methods to the component's props
 const mapDispatchToProps = dispatch => ({
+  // set budget year
   setBudgetYear: (uid, budgetYear) => {
     db.doSetBudgetYear(uid, budgetYear)
       .then(() => {
@@ -126,6 +150,7 @@ const mapDispatchToProps = dispatch => ({
         console.log(err.message)
       })
   },
+  // set budget month
   setBudgetMonth: (uid, budgetMonth) => {
     db.doSetBudgetMonth(uid, budgetMonth)
       .then(() => {
@@ -138,10 +163,12 @@ const mapDispatchToProps = dispatch => ({
         console.log(err.message)
       })
   },
+  // set flag to tell if budget exists
   setBudgetExists: selectedBudgetExists => dispatch({
     type: 'SET_BUDGET_EXISTS',
     selectedBudgetExists,
   }),
+  // set income groups
   setBudgetIncomeGroups: budgetInputGroups => dispatch({
     type: 'SET_BUDGET_INPUT_GROUPS',
     budgetInputGroups,

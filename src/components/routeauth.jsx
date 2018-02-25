@@ -5,6 +5,13 @@ import * as routes from '../constants/routes'
 import { firebase } from '../firebase'
 import { byPropKey } from './common'
 
+/**
+ * reRouteAuthUsers - HOC
+ * Will add the functionality to re-route a user to user protected page if they are
+ * already signed in.
+ * @param  {object} Component [React Component]
+ * @return {object}           [HOC React Component]
+ */
 const reRouteAuthUsers = (Component) => {
   class RouteAuthUsers extends React.Component {
 

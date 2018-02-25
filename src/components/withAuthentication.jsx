@@ -1,9 +1,15 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
 
 import { firebase } from '../firebase'
 
+/**
+ * withAuthentication - HOC
+ * Will add the functionality to a component that stores a firebase `authUser` into
+ * the global redux store.
+ * @param  {object} Component [React Component]
+ * @return {object}           [HOC React Component]
+ */
 const withAuthentication = (Component) => {
   class WithAuthentication extends React.Component {
 
@@ -21,10 +27,6 @@ const withAuthentication = (Component) => {
     }
 
   } // end class WithAuthentication
-
-  WithAuthentication.propTypes = {
-    onSetAuthUser: PropTypes.func.isRequired,
-  }
 
   const mapDispatchToProps = dispatch => ({
     onSetAuthUser: authUser => dispatch({

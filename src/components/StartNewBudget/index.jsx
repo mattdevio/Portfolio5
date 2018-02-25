@@ -5,12 +5,17 @@ import styles from './StartNewBudget.css'
 import { db } from '../../firebase'
 import renderStruct from './initBudgetStructure'
 
+/**
+ * StartNewBudget - React Components
+ * Lets the user init a new budget on a month & year
+ */
 class StartNewBudget extends Component {
   constructor(props) {
     super(props)
     this.initBudgetYear = this.initBudgetYear.bind(this)
   }
 
+  // init budget on firebase db and set budgetExists flag
   initBudgetYear() {
     const {
       authUser,
@@ -30,6 +35,7 @@ class StartNewBudget extends Component {
     })
   }
 
+  // display the form / button to init a budget
   render() {
     const {
       budgetYear,
@@ -46,6 +52,7 @@ class StartNewBudget extends Component {
   }
 }
 
+// map state from redux store to StartNewBudget props
 const mapStateToProps = state => ({
   authUser: state.sessionState.authUser,
   budgetYear: state.budgetState.budgetYear,
@@ -53,6 +60,7 @@ const mapStateToProps = state => ({
   selectedBudgetExists: state.budgetState.selectedBudgetExists,
 })
 
+// map dispatch method to StartNewBudget props
 const mapDispatchToProps = dispatch => ({
   setBudgetExists: selectedBudgetExists => dispatch({
     type: 'SET_BUDGET_EXISTS',
@@ -60,4 +68,5 @@ const mapDispatchToProps = dispatch => ({
   }),
 })
 
+// export StartNewBudget
 export default connect(mapStateToProps, mapDispatchToProps)(StartNewBudget)

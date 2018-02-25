@@ -1,5 +1,6 @@
 import cloneDeep from 'lodash.clonedeep'
 
+// set the initial state
 const INITIAL_STATE = {
   budgetYear: '',
   budgetMonth: '',
@@ -7,32 +8,38 @@ const INITIAL_STATE = {
   budgetInputGroups: {},
 }
 
+// update the budget year
 const applySetBudgetYear = (state, action) => ({
   ...state,
   budgetYear: action.budgetYear,
 })
 
+// update the budget month
 const applySetBudgetMonth = (state, action) => ({
   ...state,
   budgetMonth: action.budgetMonth,
 })
 
+// update the budget exists boolean
 const applySetBudgetExists = (state, action) => ({
   ...state,
   selectedBudgetExists: action.selectedBudgetExists,
 })
 
+// set the budget input groups
 const applySetBudgetInputGroups = (state, action) => ({
   ...state,
   budgetInputGroups: action.budgetInputGroups,
 })
 
+// update a label on a single budget input group
 const applyUpdateBudgetInputGroupLabel = (state, action) => {
   const newState = cloneDeep(state)
   newState.budgetInputGroups[action.uuid].label = action.label
   return newState
 }
 
+// compose the budget reducer
 function budgetReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'SET_BUDGET_YEAR': {

@@ -7,6 +7,10 @@ import reRouteAuthUsers from '../routeauth'
 import styles from './LandingPage.css'
 import landingImg from '../../img/landing.png'
 
+/**
+ * LandingPage - React Component
+ * The Landing Page
+ */
 const LandingPage = () => (
   <div className={styles.container}>
     <img

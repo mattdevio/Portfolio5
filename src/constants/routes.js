@@ -1,3 +1,4 @@
+// These are basically enviornment variables
 export const LANDING = '/'
 export const SIGN_IN = '/signin'
 export const MY_BUDGET = '/mybudget'

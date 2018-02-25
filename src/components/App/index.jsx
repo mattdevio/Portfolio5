@@ -15,6 +15,10 @@ import withAuthentication from '../withAuthentication'
 import * as routes from '../../constants/routes'
 import styles from './App.css'
 
+/**
+ * App - React Component
+ * The main app component that handles routing and core page structure
+ */
 const App = () => (
   <Router>
     <div className={styles.flex}>

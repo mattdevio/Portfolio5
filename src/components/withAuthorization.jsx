@@ -6,6 +6,13 @@ import { withRouter } from 'react-router-dom'
 import { firebase } from '../firebase'
 import * as routes from '../constants/routes'
 
+/**
+ * withAuthorization - HOC (composable)
+ * Will add the functionality to restrict page access to authorized users.
+ * @param  {function} authCondition [Returns boolean based on conditional page access]
+ * @param  {object}   Component     [A React Component]
+ * @return {object}                 [HOC React Component]
+ */
 const withAuthorization = authCondition => (Component) => {
   class WithAuthorization extends React.Component {
 

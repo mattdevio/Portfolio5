@@ -5,12 +5,16 @@ import PropTypes from 'prop-types'
 
 import styles from './common.css'
 
-// Dynamically intergrate setState
+// Dynamically scope a setState object
 const byPropKey = (propertyName, value) => () => ({
   [propertyName]: value,
 })
 
-// Standard Form Input
+/**
+ * FormInput - A React Component
+ * @param  {object} props               [The React Components Prop]
+ * @param  {object} context.bubbleState [React Context Type]
+ */
 const FormInput = (props, { bubbleState }) => {
   const {
     propertyName,
@@ -36,6 +40,7 @@ const FormInput = (props, { bubbleState }) => {
   )
 }
 
+// Required prop types for context
 FormInput.contextTypes = {
   bubbleState: PropTypes.func,
 }

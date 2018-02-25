@@ -11,8 +11,14 @@ import IncomeBlock from '../IncomeBlock'
 
 import styles from './MyBudget.css'
 
+/**
+ * MyBudgetPage - React Component
+ * The 'My Budget' pages is the page that lets users create budgets
+ */
 class MyBudgetPage extends Component {
 
+  // Load initial user data the database, set defaults if it's the first time
+  // logging in.
   componentDidMount() {
     const {
       setDisplayName,
@@ -34,6 +40,7 @@ class MyBudgetPage extends Component {
       })
   }
 
+  // Condition Display For Budget Data
   renderBudgetData() {
     if (this.props.selectedBudgetExists) {
       return (
@@ -43,6 +50,7 @@ class MyBudgetPage extends Component {
     return (<StartNewBudget />)
   }
 
+  // Display Budget Structure
   render() {
     const {
       displayName,
@@ -63,6 +71,7 @@ class MyBudgetPage extends Component {
   }
 }
 
+// map redux state to MyBudgetPage props
 const mapStateToProps = state => ({
   authUser: state.sessionState.authUser,
   displayName: state.userState.displayName,
@@ -71,6 +80,7 @@ const mapStateToProps = state => ({
   selectedBudgetExists: state.budgetState.selectedBudgetExists,
 })
 
+// map dispatch methods to MyBudgetPage props
 const mapDispatchToProps = dispatch => ({
   setDisplayName: displayName => dispatch({
     type: 'SET_DISPLAYNAME',
@@ -86,8 +96,10 @@ const mapDispatchToProps = dispatch => ({
   }),
 })
 
+// Define the authCondition
 const authCondition = authUser => !!authUser
 
+// Export the composed React HOC
 export default compose(
   withAuthorization(authCondition),
   connect(mapStateToProps, mapDispatchToProps),

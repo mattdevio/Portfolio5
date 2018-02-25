@@ -1,5 +1,9 @@
 import { v4 as uuid } from 'uuid'
 
+/**
+ * Returns a new budget structure to intialize a budget
+ * @return {object} [A base budget object]
+ */
 export default () => {
 
   const struct = {

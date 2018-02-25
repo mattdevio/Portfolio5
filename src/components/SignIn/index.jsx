@@ -9,6 +9,10 @@ import styles from './SignIn.css'
 import * as routes from '../../constants/routes'
 import reRouteAuthUsers from '../routeauth'
 
+/**
+ * SignInPage = React Component
+ * @param  {object} props.history [A reference to react-router-dom history]
+ */
 const SignInPage = ({ history }) => (
   <div className={styles.container}>
     <h1>Sign In</h1>
@@ -26,12 +30,16 @@ const SignInPage = ({ history }) => (
   </div>
 )
 
+// The initial state for the SignInForm
 const INITIAL_STATE = {
   email: '',
   password: '',
   error: null,
 }
 
+/**
+ * SignInForm - React Component
+ */
 class SignInForm extends Component {
   constructor(props) {
     super(props)
@@ -39,6 +47,7 @@ class SignInForm extends Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
 
+  // map setState to FormInput through context 
   getChildContext() {
     return {
       bubbleState: (propertyName, value) => {
@@ -47,6 +56,8 @@ class SignInForm extends Component {
     }
   }
 
+  // handle SignInForm Submit
+  // Validates on firebase auth side
   onSubmit(event) {
     event.preventDefault()
     const {
@@ -68,6 +79,7 @@ class SignInForm extends Component {
       })
   }
 
+  // display the SignIn Form
   render() {
     const {
       email,
@@ -108,10 +120,12 @@ class SignInForm extends Component {
   }
 }
 
+// required proptypes for context
 SignInForm.childContextTypes = {
   bubbleState: PropTypes.func,
 }
 
+// export the composed SignInPage
 export default compose(
   reRouteAuthUsers,
   withRouter,

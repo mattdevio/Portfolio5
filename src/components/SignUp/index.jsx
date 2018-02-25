@@ -10,6 +10,10 @@ import * as routes from '../../constants/routes'
 import { byPropKey, FormInput } from '../common'
 import styles from './SignUp.css'
 
+/**
+ * SignUpPage - React Component
+ * @param  {object} props.history [react-router-dom history reference]
+ */
 const SignUpPage = ({ history }) => (
   <div className={styles.container}>
     <h1>Sign Up</h1>
@@ -18,6 +22,7 @@ const SignUpPage = ({ history }) => (
   </div>
 )
 
+// Initial state for the SignUpForm
 const INITIAL_STATE = {
   displayName: '',
   email: '',
@@ -26,6 +31,10 @@ const INITIAL_STATE = {
   error: null,
 }
 
+/**
+ * SignUpForm - React Component
+ * The form that lets users signup for Moolahlah
+ */
 class SignUpForm extends Component {
   constructor(props) {
     super(props)
@@ -33,6 +42,7 @@ class SignUpForm extends Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
 
+  // map setState to FormInput children through context
   getChildContext() {
     return {
       bubbleState: (propertyName, value) => {
@@ -41,6 +51,8 @@ class SignUpForm extends Component {
     }
   }
 
+  // handle form SignUp Submit.
+  // Validates on both client side and firebase auth
   onSubmit(event) {
     event.preventDefault()
     const {
@@ -69,7 +81,6 @@ class SignUpForm extends Component {
     }
 
     // password length and email are validated by firebase
-
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then((authUser) => {
         db.doCreateUser(authUser.uid, displayName)
@@ -86,6 +97,7 @@ class SignUpForm extends Component {
       })
   }
 
+  // display the signup form
   render() {
     const {
       displayName,
@@ -144,8 +156,10 @@ class SignUpForm extends Component {
 
 } // end SignUpForm class
 
+// request proptypes for context
 SignUpForm.childContextTypes = {
   bubbleState: PropTypes.func,
 }
 
+// export SignUpPage
 export default withRouter(SignUpPage)

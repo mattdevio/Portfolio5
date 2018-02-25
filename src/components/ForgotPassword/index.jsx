@@ -8,6 +8,10 @@ import { auth } from '../../firebase'
 import * as routes from '../../constants/routes'
 import { byPropKey, FormInput } from '../common'
 
+/**
+ * ForgotPasswordPage - React Component
+ * @param  {object} props.history [The react-router-dom history object]
+ */
 const ForgotPasswordPage = ({ history }) => (
   <div className={styles.container}>
     <h1>Forgot Your Password?</h1>
@@ -16,11 +20,16 @@ const ForgotPasswordPage = ({ history }) => (
   </div>
 )
 
+// Scopped Initial State for PasswordForgetForm
 const INITIAL_STATE = {
   email: '',
   error: null,
 }
 
+/**
+ * PasswordForgetForm - React Component
+ * The form that allows users to reset their password.
+ */
 class PasswordForgetForm extends Component {
   constructor(props) {
     super(props)
@@ -28,6 +37,7 @@ class PasswordForgetForm extends Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
 
+  // Map a setState method to child 'FormInput' compoents through context.
   getChildContext() {
     return {
       bubbleState: (propertyName, value) => {
@@ -36,6 +46,8 @@ class PasswordForgetForm extends Component {
     }
   }
 
+  // Request password reset from firebase auth. The firebase auth will handle
+  // form validation. Displays a sweetalert model on success.
   onSubmit(event) {
     event.preventDefault()
     const { email } = this.state
@@ -53,6 +65,7 @@ class PasswordForgetForm extends Component {
       })
   }
 
+  // display the form
   render() {
     const {
       email,
@@ -81,6 +94,7 @@ class PasswordForgetForm extends Component {
   }
 }
 
+// Prop types required for context
 PasswordForgetForm.childContextTypes = {
   bubbleState: PropTypes.func,
 }

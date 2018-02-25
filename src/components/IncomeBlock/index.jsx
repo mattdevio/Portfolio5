@@ -5,12 +5,18 @@ import { connect } from 'react-redux'
 import styles from './IncomeBlock.css'
 import { db } from '../../firebase'
 
+/**
+ * IncomeBlock - React Component
+ * The module on the MyBudget pages that allows users to add 'income'
+ */
 class IncomeBlock extends Component {
 
+  // Life Cycle Method
   componentWillReceiveProps(nextProps) {
     // console.dir(nextProps)
   }
 
+  // Display the module
   render() {
     const { budgetInputGroups } = this.props
     return (
@@ -40,14 +46,18 @@ class IncomeBlock extends Component {
   }
 }
 
-
+// map state from the redux store to the income block
 const mapStateToIncomeBlockProps = state => ({
   budgetInputGroups: state.budgetState.budgetInputGroups,
 })
 
+// export the IncomeBlock component
 export default connect(mapStateToIncomeBlockProps)(IncomeBlock)
 
-
+/**
+ * InputLine - React Component
+ * The Single Input Line that lets a user add an income
+ */
 const InputLine = (function constructInputLine() {
   class incomeInput extends Component {
 
@@ -57,6 +67,8 @@ const InputLine = (function constructInputLine() {
       this.updatePlanned = this.updatePlanned.bind(this)
     }
 
+    // When a value on the input line changes, save the new value to the firebase db.
+    // The save call to the DB is debounced if multiple calls are sequential sub 1 sec.
     componentWillReceiveProps(nextProps) {
       const {
         label,
@@ -84,16 +96,19 @@ const InputLine = (function constructInputLine() {
       }
     }
 
+    // update the input line's label in the global state
     updateLabel(event) {
       const labelValue = event.target.value
       this.props.updateBudgetInputGroupLabel(this.props.uuid, labelValue)
     }
 
+    // update the input line's planned value in the global state
     updatePlanned(event) {
       const plannedValue = event.target.value
       console.log(this.props.uuid, plannedValue)
     }
 
+    // display the input line
     render() {
       const {
         label,
@@ -125,7 +140,9 @@ const InputLine = (function constructInputLine() {
     }
   }
 
+  // map dispatch to the InputLine props
   const mapDispatchToProps = dispatch => ({
+    // update label
     updateBudgetInputGroupLabel: (uuid, label) => dispatch({
       type: 'UPDATE_BUDGET_INPUT_GROUP_LABEL',
       uuid,
@@ -133,6 +150,7 @@ const InputLine = (function constructInputLine() {
     }),
   })
 
+  // map state to the InputLine props
   const mapStateToProps = state => ({
     authUser: state.sessionState.authUser,
     budgetMonth: state.budgetState.budgetMonth,
