@@ -6,8 +6,8 @@ export const doCreateUser = (id, displayName) =>
     displayName,
   })
 
-// Get the displayName
-export const getDisplayName = id =>
+// Get the userData
+export const getUserData = id =>
   db.ref(`users/${id}`).once('value')
 
 // set the current budget year

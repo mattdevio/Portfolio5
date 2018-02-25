@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'recompose'
+import moment from 'moment'
 
 import { db } from '../../firebase'
 import withAuthorization from '../withAuthorization'
@@ -13,15 +14,34 @@ import styles from './MyBudget.css'
 class MyBudgetPage extends Component {
 
   componentDidMount() {
-    if (!this.props.displayName) {
-      db.getDisplayName(this.props.authUser.uid)
-        .then((snapshot) => {
-          this.props.setDisplayName(snapshot.val().displayName)
-        })
-        .catch((error) => {
-          console.dir(error)
-        })
+    const {
+      setDisplayName,
+      setBudgetYear,
+      setBudgetMonth,
+      selectedBudgetExists,
+    } = this.props
+    db.getUserData(this.props.authUser.uid)
+      .then((snapshot) => {
+        const user = snapshot.val()
+        const now = moment()
+        const budgetYear = user.budgetYear || now.format('YYYY')
+        const budgetMonth = user.budgetMonth || now.format('MMMM')
+        setDisplayName(user.displayName)
+        setBudgetYear(budgetYear)
+        setBudgetMonth(budgetMonth)
+      })
+      .catch((error) => {
+        console.dir(error)
+      })
+  }
+
+  renderBudgetData() {
+    if (this.props.selectedBudgetExists) {
+      return (
+        <IncomeBlock />
+      )
     }
+    return (<StartNewBudget />)
   }
 
   render() {
@@ -37,8 +57,7 @@ class MyBudgetPage extends Component {
         <section className={styles.right}>
           <BudgetMonthSelector />
           <hr />
-          <StartNewBudget />
-          <IncomeBlock />
+          {this.renderBudgetData.bind(this)()}
         </section>
       </div>
     )
@@ -50,12 +69,21 @@ const mapStateToProps = state => ({
   displayName: state.userState.displayName,
   budgetMonth: state.budgetState.budgetMonth,
   budgetYear: state.budgetState.budgetYear,
+  selectedBudgetExists: state.budgetState.selectedBudgetExists,
 })
 
 const mapDispatchToProps = dispatch => ({
   setDisplayName: displayName => dispatch({
     type: 'SET_DISPLAYNAME',
     displayName,
+  }),
+  setBudgetYear: budgetYear => dispatch({
+    type: 'SET_BUDGET_YEAR',
+    budgetYear,
+  }),
+  setBudgetMonth: budgetMonth => dispatch({
+    type: 'SET_BUDGET_MONTH',
+    budgetMonth,
   }),
 })
 

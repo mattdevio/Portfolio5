@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   budgetYear: '',
   budgetMonth: '',
+  selectedBudgetExists: false,
 }
 
 const applySetBudgetYear = (state, action) => ({
@@ -13,6 +14,11 @@ const applySetBudgetMonth = (state, action) => ({
   budgetMonth: action.budgetMonth,
 })
 
+const applySetBudgetExists = (state, action) => ({
+  ...state,
+  selectedBudgetExists: action.selectedBudgetExists,
+})
+
 function budgetReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
     case 'SET_BUDGET_YEAR': {
@@ -20,6 +26,9 @@ function budgetReducer(state = INITIAL_STATE, action) {
     }
     case 'SET_BUDGET_MONTH': {
       return applySetBudgetMonth(state, action)
+    }
+    case 'SET_BUDGET_EXISTS': {
+      return applySetBudgetExists(state, action)
     }
     default: return state
   }

@@ -14,30 +14,40 @@ class BudgetMonthSelector extends Component {
     }
   }
 
-  componentDidMount() {
+  componentWillReceiveProps(nextProps) {
     const {
       budgetYear,
       budgetMonth,
+      authUser,
+      setBudgetExists,
     } = this.props
-    const now = moment()
-    if (!budgetYear) {
-      this.setBudgetYear(now.format('YYYY'))
-    }
-    if (!budgetMonth) {
-      this.setBudgetMonth(now.format('MMMM'))
+    if (budgetYear !== nextProps.budgetYear || budgetMonth !== nextProps.budgetMonth) {
+      db.doGetBudgetInformation(authUser.uid, nextProps.budgetMonth, nextProps.budgetYear)
+        .then((snapshot) => {
+          const budgetData = snapshot.val()
+          setBudgetExists(!!budgetData)
+          /*
+            BUDGET LOADING SHOULD GO HERE
+           */
+        })
+        .catch((error) => {
+          console.log(error.message)
+        })
     }
   }
 
   setBudgetMonth(month) {
+    const { authUser } = this.props
     this.props.setBudgetMonth(
-      this.props.authUser.uid,
+      authUser.uid,
       month,
     )
   }
 
   setBudgetYear(year) {
+    const { authUser } = this.props
     this.props.setBudgetYear(
-      this.props.authUser.uid,
+      authUser.uid,
       year,
     )
   }
@@ -121,6 +131,10 @@ const mapDispatchToProps = dispatch => ({
         console.log(err.message)
       })
   },
+  setBudgetExists: selectedBudgetExists => dispatch({
+    type: 'SET_BUDGET_EXISTS',
+    selectedBudgetExists,
+  }),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(BudgetMonthSelector)
