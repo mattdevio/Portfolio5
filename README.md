@@ -15,7 +15,9 @@ The only machine dependency is `Node.js version 7.5.0`. The backend uses the `Fi
 
 ## Tech Stack
 
-__Please see the `package.json` file for dependencies__
+This is a single page application that uses React, Redux, & React Router Dom. The backend is all Google Firebase. The config for the firebase connection can be found in `src/firebase/firebas.js`. It uses the basic email & password authentication and a database. The database rules have yet to be defined because the application has not been finished yet. <br>
+
+__Please see the `package.json` file for complete dependencies__
 
 ## Development
 
@@ -24,17 +26,17 @@ I am using `Webpack 3` to bundle assets and run tasks. _The configuration is cus
 **Scripts**
 ```
 # Clone the reposition
-$bash: git clone https://github.com/mattgreenberg/Portfolio5.git ./moolahlah
+git clone https://github.com/mattgreenberg/Portfolio5.git ./moolahlah
 
 # Install Dependencies
-$bash: npm install
+npm install
 
 # Start Development Server
 # The server does watch and reload non webpack files.
-$bash: npm start
+npm start
 
 # Build Production Bundle
-$bash: npm run build
+npm run build
 ```
 
 ___
