@@ -39,6 +39,12 @@ const applyUpdateBudgetInputGroupLabel = (state, action) => {
   return newState
 }
 
+const applyUpdateBudgetInputGroupPlanned = (state, action) => {
+  const newState = cloneDeep(state)
+  newState.budgetInputGroups[action.uuid].planned = action.planned
+  return newState
+}
+
 // compose the budget reducer
 function budgetReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -56,6 +62,9 @@ function budgetReducer(state = INITIAL_STATE, action) {
     }
     case 'UPDATE_BUDGET_INPUT_GROUP_LABEL': {
       return applyUpdateBudgetInputGroupLabel(state, action)
+    }
+    case 'UPDATE_BUDGET_INPUT_GROUP_PLANNED': {
+      return applyUpdateBudgetInputGroupPlanned(state, action)
     }
     default: return state
   }

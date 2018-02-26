@@ -105,7 +105,7 @@ const InputLine = (function constructInputLine() {
     // update the input line's planned value in the global state
     updatePlanned(event) {
       const plannedValue = event.target.value
-      console.log(this.props.uuid, plannedValue)
+      this.props.updateBudgetInputGroupPlanned(this.props.uuid, plannedValue)
     }
 
     // display the input line
@@ -147,6 +147,11 @@ const InputLine = (function constructInputLine() {
       type: 'UPDATE_BUDGET_INPUT_GROUP_LABEL',
       uuid,
       label,
+    }),
+    updateBudgetInputGroupPlanned: (uuid, planned) => dispatch({
+      type: 'UPDATE_BUDGET_INPUT_GROUP_PLANNED',
+      uuid,
+      planned,
     }),
   })
 
