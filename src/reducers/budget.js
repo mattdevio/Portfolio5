@@ -52,6 +52,12 @@ const applyRemoveBudgetInputGroup = (state, action) => {
   return newState
 }
 
+const applyAddNewBudgetInputGroup = (state, action) => {
+  const newState = cloneDeep(state)
+  newState.budgetInputGroups[action.newUid] = action.struct
+  return newState
+}
+
 // compose the budget reducer
 function budgetReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
@@ -75,6 +81,9 @@ function budgetReducer(state = INITIAL_STATE, action) {
     }
     case 'REMOVE_BUDGET_INPUT_GROUP': {
       return applyRemoveBudgetInputGroup(state, action)
+    }
+    case 'ADD_NEW_BUDGET_INPUT_GROUP': {
+      return applyAddNewBudgetInputGroup(state, action)
     }
     default: return state
   }

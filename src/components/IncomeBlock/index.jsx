@@ -1,6 +1,7 @@
 /* eslint react/no-multi-comp: 0 */
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { v4 as uuid } from 'uuid'
 
 import styles from './IncomeBlock.css'
 import { db } from '../../firebase'
@@ -12,9 +13,30 @@ import { parseToUSD, selectAll } from '../common'
  */
 class IncomeBlock extends Component {
 
-  // Life Cycle Method
-  componentWillReceiveProps(nextProps) {
-    // console.dir(nextProps)
+  constructor(props) {
+    super(props)
+    this.addInputGroup = this.addInputGroup.bind(this)
+  }
+
+  addInputGroup() {
+    const {
+      authUser,
+      budgetMonth,
+      budgetYear,
+    } = this.props
+    const struct = {
+      label: '',
+      planned: '$0.00',
+      recieved: '$0.00',
+    }
+    const newUid = uuid()
+    db.doSetBudgetIncomeInputGroup(authUser.uid, budgetMonth, budgetYear, newUid, struct)
+      .then(() => {
+        this.props.addNewBudgetIncomeGroup(newUid, struct)
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
   }
 
   // Display the module
@@ -29,18 +51,18 @@ class IncomeBlock extends Component {
             <p>Recieved</p>
           </span>
         </div>
-        {Object.keys(budgetInputGroups).map(uuid => (
+        {Object.keys(budgetInputGroups).map(key => (
           <InputLine
-            key={uuid}
-            uuid={uuid}
-            label={budgetInputGroups[uuid].label}
-            planned={budgetInputGroups[uuid].planned}
-            recieved={budgetInputGroups[uuid].recieved}
+            key={key}
+            uuid={key}
+            label={budgetInputGroups[key].label}
+            planned={budgetInputGroups[key].planned}
+            recieved={budgetInputGroups[key].recieved}
           />
         ))}
         <hr />
         <div className={styles.actions}>
-          <button className={styles.addItem}>+ Add Item</button>
+          <button className={styles.addItem} onClick={this.addInputGroup}>+ Add Item</button>
         </div>
       </div>
     )
@@ -50,10 +72,21 @@ class IncomeBlock extends Component {
 // map state from the redux store to the income block
 const mapStateToIncomeBlockProps = state => ({
   budgetInputGroups: state.budgetState.budgetInputGroups,
+  authUser: state.sessionState.authUser,
+  budgetYear: state.budgetState.budgetYear,
+  budgetMonth: state.budgetState.budgetMonth,
+})
+
+const mapDispatchToProps = dispatch => ({
+  addNewBudgetIncomeGroup: (newUid, struct) => dispatch({
+    type: 'ADD_NEW_BUDGET_INPUT_GROUP',
+    newUid,
+    struct,
+  }),
 })
 
 // export the IncomeBlock component
-export default connect(mapStateToIncomeBlockProps)(IncomeBlock)
+export default connect(mapStateToIncomeBlockProps, mapDispatchToProps)(IncomeBlock)
 
 /**
  * InputLine - React Component
@@ -88,7 +121,7 @@ const InputLine = (function constructInputLine() {
       if (newData) {
         if (this.willUpdate) clearTimeout(this.willUpdate)
         this.willUpdate = setTimeout(() => {
-          db.doUpdateBudgetIncomeInputGroup(authUser.uid, budgetMonth, budgetYear, uuid, {
+          db.doSetBudgetIncomeInputGroup(authUser.uid, budgetMonth, budgetYear, uuid, {
             label: nextProps.label,
             planned: nextProps.planned,
             recieved: nextProps.recieved,

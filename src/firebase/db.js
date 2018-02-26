@@ -27,7 +27,7 @@ export const doInitBudgetInformation = (uid, budgetMonth, budgetYear, struct) =>
   db.ref(`users/${uid}/budget`).child(budgetYear + budgetMonth).set(struct)
 
 // update a signle budget input group
-export const doUpdateBudgetIncomeInputGroup = (uid, budgetMonth, budgetYear, uuid, struct) =>
+export const doSetBudgetIncomeInputGroup = (uid, budgetMonth, budgetYear, uuid, struct) =>
   db.ref(`users/${uid}/budget/${budgetYear}${budgetMonth}/income`)
     .child(uuid).set(struct)
 
