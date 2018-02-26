@@ -48,7 +48,6 @@ const applyUpdateBudgetInputGroupPlanned = (state, action) => {
 const applyRemoveBudgetInputGroup = (state, action) => {
   const newState = cloneDeep(state)
   delete newState.budgetInputGroups[action.uuid]
-  console.dir(newState)
   return newState
 }
 
