@@ -55,8 +55,14 @@ const parseToUSD = (value) => {
   return Number(value).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
 }
 
+// Select All Text on Input Focus
+const selectAll = (event) => {
+  event.target.setSelectionRange(0, event.target.value.length)
+}
+
 export {
   byPropKey,
   FormInput,
   parseToUSD,
+  selectAll,
 }

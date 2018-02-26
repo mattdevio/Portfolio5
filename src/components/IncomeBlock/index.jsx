@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 
 import styles from './IncomeBlock.css'
 import { db } from '../../firebase'
-import { parseToUSD } from '../common'
+import { parseToUSD, selectAll } from '../common'
 
 /**
  * IncomeBlock - React Component
@@ -135,6 +135,7 @@ const InputLine = (function constructInputLine() {
               placeholder='Budget Label Item'
               onChange={this.updateLabel}
               value={label}
+              onFocus={selectAll}
             />
           </div>
           <div className={styles.displayGroup}>
@@ -144,6 +145,7 @@ const InputLine = (function constructInputLine() {
               onChange={this.updatePlanned}
               value={planned}
               onBlur={this.onPlannedBlur}
+              onFocus={selectAll}
             />
           </div>
           <p className={styles.actual}>{recieved}</p>
