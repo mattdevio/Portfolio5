@@ -9,6 +9,8 @@ ___
 
 moolahlah is a budgeting application. You enter your income / expenses / debts; then over the timeblock of the budget, you add your expenses. The application tracks your progress.
 
+[PROJECT DEMO VIDEO](https://youtu.be/82yCi3NJL-M)
+
 ## Enviornment
 
 The only machine dependency is `Node.js version 7.5.0` if you plan on working on the project. The backend uses the `Firebase` authentication and database service to store user information.
