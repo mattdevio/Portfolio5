@@ -51,6 +51,7 @@ const NoAuthNav = () => (
  */
 const AuthNav = () => (
   <Fragment>
+    <WayLink to={routes.MY_ACCOUNT}>My Account</WayLink>
     <WayLink to={routes.MY_BUDGET}>My Budget</WayLink>
     <SignOutButton />
   </Fragment>
