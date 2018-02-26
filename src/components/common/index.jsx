@@ -45,7 +45,18 @@ FormInput.contextTypes = {
   bubbleState: PropTypes.func,
 }
 
+// Parse a number to USD
+const parseToUSD = (value) => {
+  // regular expression to test for USD string
+  const re = /^\$[0-9,]+(\.[0-9][0-9])$/
+  if (re.test(value)) {
+    return value
+  }
+  return Number(value).toLocaleString('en-US', { style: 'currency', currency: 'USD' })
+}
+
 export {
   byPropKey,
   FormInput,
+  parseToUSD,
 }

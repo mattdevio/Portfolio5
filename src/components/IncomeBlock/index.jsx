@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import styles from './IncomeBlock.css'
 import { db } from '../../firebase'
+import { parseToUSD } from '../common'
 
 /**
  * IncomeBlock - React Component
@@ -65,6 +66,7 @@ const InputLine = (function constructInputLine() {
       super(props)
       this.updateLabel = this.updateLabel.bind(this)
       this.updatePlanned = this.updatePlanned.bind(this)
+      this.onPlannedBlur = this.onPlannedBlur.bind(this)
     }
 
     // When a value on the input line changes, save the new value to the firebase db.
@@ -93,6 +95,15 @@ const InputLine = (function constructInputLine() {
             console.log(error.message)
           })
         }, 1000)
+      }
+    }
+
+    onPlannedBlur(event) {
+      const previous = event.target.value.slice(0)
+      const newVal = parseToUSD(event.target.value)
+      event.target.value = (newVal === 'NaN') ? '$0.00' : newVal
+      if (previous !== event.target.value) {
+        this.props.updateBudgetInputGroupPlanned(this.props.uuid, event.target.value)
       }
     }
 
@@ -132,6 +143,7 @@ const InputLine = (function constructInputLine() {
               placeholder='$0.00'
               onChange={this.updatePlanned}
               value={planned}
+              onBlur={this.onPlannedBlur}
             />
           </div>
           <p className={styles.actual}>{recieved}</p>

@@ -10,6 +10,7 @@ module.exports = {
     "jsx-quotes": ["error", "prefer-single"],
     "padded-blocks": 0,
     "import/prefer-default-export": 0,
+    "no-param-reassign": 0,
     "jsx-a11y/anchor-is-valid": [ "error", {
       "components": [ "Link" ],
       "specialLink": [ "to", "hrefLeft", "hrefRight" ],
