@@ -67,6 +67,7 @@ const InputLine = (function constructInputLine() {
       this.updateLabel = this.updateLabel.bind(this)
       this.updatePlanned = this.updatePlanned.bind(this)
       this.onPlannedBlur = this.onPlannedBlur.bind(this)
+      this.discardIncomeLine = this.discardIncomeLine.bind(this)
     }
 
     // When a value on the input line changes, save the new value to the firebase db.
@@ -87,7 +88,7 @@ const InputLine = (function constructInputLine() {
       if (newData) {
         if (this.willUpdate) clearTimeout(this.willUpdate)
         this.willUpdate = setTimeout(() => {
-          db.doUpdateBudgetInputGroup(authUser.uid, budgetMonth, budgetYear, uuid, {
+          db.doUpdateBudgetIncomeInputGroup(authUser.uid, budgetMonth, budgetYear, uuid, {
             label: nextProps.label,
             planned: nextProps.planned,
             recieved: nextProps.recieved,
@@ -119,6 +120,23 @@ const InputLine = (function constructInputLine() {
       this.props.updateBudgetInputGroupPlanned(this.props.uuid, plannedValue)
     }
 
+    // delete this income line
+    discardIncomeLine() {
+      const {
+        authUser,
+        budgetMonth,
+        budgetYear,
+        uuid,
+      } = this.props
+      db.doRemoveBudgetIncomeInputGroup(authUser.uid, budgetMonth, budgetYear, uuid)
+        .then(() => {
+          this.props.removeBudgetInputGroup(uuid)
+        })
+        .catch((err) => {
+          console.log(err.message)
+        })
+    }
+
     // display the input line
     render() {
       const {
@@ -129,7 +147,7 @@ const InputLine = (function constructInputLine() {
       return (
         <div className={styles.toggleInput}>
           <div className={styles.inputGroup}>
-            <button>X</button>
+            <button onClick={this.discardIncomeLine}>X</button>
             <input
               type='text'
               placeholder='Budget Label Item'
@@ -166,6 +184,10 @@ const InputLine = (function constructInputLine() {
       type: 'UPDATE_BUDGET_INPUT_GROUP_PLANNED',
       uuid,
       planned,
+    }),
+    removeBudgetInputGroup: uuid => dispatch({
+      type: 'REMOVE_BUDGET_INPUT_GROUP',
+      uuid,
     }),
   })
 

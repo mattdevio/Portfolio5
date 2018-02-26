@@ -27,6 +27,10 @@ export const doInitBudgetInformation = (uid, budgetMonth, budgetYear, struct) =>
   db.ref(`users/${uid}/budget`).child(budgetYear + budgetMonth).set(struct)
 
 // update a signle budget input group
-export const doUpdateBudgetInputGroup = (uid, budgetMonth, budgetYear, uuid, struct) =>
+export const doUpdateBudgetIncomeInputGroup = (uid, budgetMonth, budgetYear, uuid, struct) =>
   db.ref(`users/${uid}/budget/${budgetYear}${budgetMonth}/income`)
     .child(uuid).set(struct)
+
+// delete a single budget income group
+export const doRemoveBudgetIncomeInputGroup = (uid, budgetMonth, budgetYear, uuid) =>
+  db.ref(`users/${uid}/budget/${budgetYear}${budgetMonth}/income/${uuid}`).remove()
