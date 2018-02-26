@@ -11,11 +11,11 @@ moolahlah is a budgeting application. You enter your income / expenses / debts; 
 
 ## Enviornment
 
-The only machine dependency is `Node.js version 7.5.0`. The backend uses the `Firebase` authentication and database service to store user information. Database rules will be defined as I go.
+The only machine dependency is `Node.js version 7.5.0` if you plan on working on the project. The backend uses the `Firebase` authentication and database service to store user information.
 
 ## Tech Stack
 
-This is a single page application that uses React, Redux, & React Router Dom. The backend is all Google Firebase. The config for the firebase connection can be found in `src/firebase/firebas.js`. It uses the basic email & password authentication and a database. The database rules have yet to be defined because the application has not been finished yet. <br>
+This is a single page application that uses React, Redux, & React Router Dom. The backend is all Google Firebase. The config for the firebase connection can be found in `src/firebase/firebase.js`. It uses the basic email & password authentication and a database. The database rules have yet to be defined because the application has not been finished yet. <br>
 
 __Please see the `package.json` file for complete dependencies__
 
